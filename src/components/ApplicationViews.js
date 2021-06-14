@@ -1,6 +1,6 @@
 import React from "react"
 import { Route } from "react-router-dom"
-import { Profile } from "./Profile.js"
+import { Profile } from "./user/Profile.js"
 import { ProfileProvider } from "./auth/ProfileProvider.js"
 import { Home } from "./Home.js"
 
@@ -18,7 +18,9 @@ export const ApplicationViews = () => {
             {/* ______________posts__________________________ */}
 
             {/* _________________Profile______________________________ */}
-               
+            <Route exact path="/profile">
+                <Profile />
+            </Route>
         </main>
     </>
 }

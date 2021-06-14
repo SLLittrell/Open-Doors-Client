@@ -1,10 +1,10 @@
 import React, { useEffect, useContext } from "react"
-import { ProfileContext } from "./auth/ProfileProvider"
+import { ProfileContext } from "../auth/ProfileProvider"
 // import "./Profile.css"
 
 
 export const Profile = () => {
-    const { profile, getProfile } = useContext(ProfileContext)
+    const { user,  } = useContext(ProfileContext)
 
     useEffect(() => {
         getProfile()
