@@ -5,7 +5,7 @@ import { settings } from "../auth/Settings"
 export const AttractionContext = createContext()
 
 export const AttractionProvider = (props) => {
-    const [ places, setPlaces ] = useState([])
+    const [ attraction, setAttraction ] = useState([])
     const [ local, setLocations ] = useState([])
 
 
@@ -15,24 +15,23 @@ export const AttractionProvider = (props) => {
             .then(response => response.json())
             .then(parsed => {
                 setLocations(parsed)
+                return parsed
             })
     }
     
-    const getAttractions = (location) => {
-        return fetch(`https://api.opentripmap.com/0.1/en/places/radius?radius=1600&lon=${location.lon}&lat=${location.lat}&src_geom=osm&src_attr=wikidata&format=json&apikey=${settings.openApiKey}`, {
+    const getAttractions = (local) => {
+        return fetch(`https://api.opentripmap.com/0.1/en/places/radius?radius=8000&lon=${local.lon}&lat=${local.lat}&src_geom=osm&src_attr=wikidata&format=json&apikey=${settings.openApiKey}`, {
         })
             .then(response => response.json())
-            .then( parsedAttractions => {
-                setPlaces(parsedAttractions)})
+            // .then(parsedAttractions => 
+            //     setPlaces(parsedAttractions))
     }
 
 
 
     const [ searchTerms, setSearchTerms ] = useState("")
-
-    console.log(searchTerms)
     return (
-        <AttractionContext.Provider value={{ getAttractions, places, getLocation, local, searchTerms, setSearchTerms }} >
+        <AttractionContext.Provider value={{ getAttractions, setAttraction,attraction, getLocation, local, searchTerms, setSearchTerms }} >
             { props.children }
         </AttractionContext.Provider>
     )
