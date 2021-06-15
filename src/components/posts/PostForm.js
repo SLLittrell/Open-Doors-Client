@@ -1,21 +1,29 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from 'react-router-dom';
+import { CategoryContext } from "../categories/CategoryProvider";
 import { PostContext } from "./PostProvider";
 
 
 export const PostForm = () => {
     const{ addPost, getPostById} =useContext(PostContext)
+    const {getCategories, categories}=useContext(CategoryContext)
     
     const userId = parseInt(localStorage.getItem(`open_user_id`))
     const [isLoading, setIsLoading] = useState(true)
     const postId = useParams()
     const history = useHistory()
     
+    useEffect(() => {
+        getCategories()
+    },[])
+    
     const[post, setPost] = useState({
         userId: userId,
         title: "",
         content: "",
         imageUrl: "",
+        socialStory:null,
+        visualSchedule: null,
         categoryId: 0,
         approved: true
     })
@@ -43,6 +51,8 @@ export const PostForm = () => {
             user_id: parseInt(post.userId),
             title: post.title,
             content: post.content,
+            social_story:post.socialStory,
+            visual_schedule:post.visualSchedule,
             image_url: post.imageUrl,
             category_id: parseInt(post.categoryId),
             approved: post.approved
@@ -103,6 +113,21 @@ export const PostForm = () => {
                     <option value="0" placeholder='Choose a Visual Schedule'></option>
                 </select>
             </div>
+            </fieldset>
+
+            <fieldset>
+                <div className="form-group">
+                <label htmlFor="category_id">Category: </label>
+                <select id="categoryId" className="form-control" 
+                onChange={handleInputChange}>
+                    <option value="0">Select a Category</option>
+                    {categories.map(type => (
+                    <option key={type.id} value={type.id}>
+                        {type.label}
+                    </option>
+                    ))}
+                </select>
+                </div>
             </fieldset>
     
             <button className=""

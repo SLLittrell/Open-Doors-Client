@@ -10,6 +10,7 @@ import { SearchAttractionLocations } from "./attractions/Search.js"
 import { PostList } from "./posts/PostList.js"
 import { PostProvider } from "./posts/PostProvider.js"
 import { PostForm } from "./posts/PostForm.js"
+import { CategoryProvider } from "./categories/CategoryProvider.js"
 
 export const ApplicationViews = () => {
     return <>
@@ -20,35 +21,36 @@ export const ApplicationViews = () => {
             <ProfileProvider>
                 <AttractionProvider>
                     <PostProvider>
+                        <CategoryProvider>
 
-                    <Route exact path="/">
-                        <Home/>
-                    </Route>
-                    {/* _________________Attractions________________ */}
-                    <Route exact path="/attractions">
-                        <SearchAttractionLocations />
-                        <AttractionList />
-                    </Route>
-                    <Route exact path="/attractions/:attractionId(\d+)">
-                        <AttractionDetails />
-                    </Route>
+                            <Route exact path="/">
+                                <Home/>
+                            </Route>
+                            {/* _________________Attractions________________ */}
+                            <Route exact path="/attractions">
+                                <SearchAttractionLocations />
+                                <AttractionList />
+                            </Route>
+                            <Route exact path="/attractions/:attractionId(\d+)">
+                                <AttractionDetails />
+                            </Route>
 
-            
-                    {/* ______________posts__________________________ */}
-                    <Route exact path="/posts/create">
-                        <PostForm />
-                    </Route>
-                    <Route exact path="/myposts">
-                        <Profile />
-                        <PostList />
-                    </Route>
-                    {/* _________________Profile______________________________ */}
-                    <Route exact path="/profile">
-                        <Profile />
-                        <PostList />
-                    </Route>
                     
-
+                            {/* ______________posts__________________________ */}
+                            <Route exact path="/posts/create">
+                                <PostForm />
+                            </Route>
+                            <Route exact path="/myposts">
+                                <Profile />
+                                <PostList />
+                            </Route>
+                            {/* _________________Profile______________________________ */}
+                            <Route exact path="/profile">
+                                <Profile />
+                                <PostList />
+                            </Route>
+                    
+                        </CategoryProvider>
                     </PostProvider>
                 </AttractionProvider>   
             </ProfileProvider>
