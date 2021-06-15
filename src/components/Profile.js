@@ -1,8 +1,8 @@
 import React, { useEffect, useContext, useState } from "react"
+import { Nav } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { ProfileContext } from "./auth/ProfileProvider"
-// import "./Profile.css"
-
+import "./Profile.css"
 
 export const Profile = () => {
     const { profile, getProfile } = useContext(ProfileContext)
@@ -24,37 +24,27 @@ export const Profile = () => {
     
     return (
         <>
-            <article className="profile">
-                <header>
-                    <h1>Welcome {profile.user?.user.first_name} {profile.user?.user.last_name}</h1>
-                </header>
-                <section className="profile__info">
-                    <div className="profile__username">Username: {profile.user ? profile.user.user.username : <></>}</div>
+            
+                <article className="profile">
+                    <header>
+                        <h1>Welcome {profile.user?.user.first_name} {profile.user?.user.last_name}</h1>
+                    </header>
+                    <section className="profile__info">
+                        <div className="profile__username">Username: {profile.user ? profile.user.user.username : <></>}</div>
+                    </section>
+                </article>
+                <section className="userProfile">
+                    <article className='user_nav'>
+                    <Nav defaultActiveKey="/home" className="flex-column">
+                        <Nav.Link href="/profile">Home</Nav.Link>
+                        <Nav.Link href="/library">My Library</Nav.Link>
+                        <Nav.Link href="/myposts">My Posts</Nav.Link>
+                        <Nav.Link href="/posts/create">Add Post</Nav.Link>
+                        <Nav.Link href="/stories/create">Create Social Stories</Nav.Link>
+                        <Nav.Link href="/schedules/create">Create Schedules</Nav.Link>
+                    </Nav>
+                    </article>
                 </section>
-            </article>
-            <article className='user_nav'>
-            <ul className="navbar">
-                <li className="navbar__item">
-                    <Link className="nav-link" to="/profile">Home</Link>
-                </li>
-                <li className="navbar__item">
-                    <Link className="nav-link" to="/library">My Library</Link>
-                </li>
-                <li className="navbar__item">
-                    <Link className="nav-link" to="/myposts">My Posts</Link>
-                </li>
-                <li className="navbar__item">
-                    <Link className="nav-link" to="/posts/create">Add Post</Link>
-                </li>
-                <li className="navbar__item">
-                    <Link className="nav-link" to="/stories/create">Create Social Stories</Link>
-                </li>
-                <li className="navbar__item">
-                    <Link className="nav-link" to="/schedules/create">Create Schedules</Link>
-                </li>
-            </ul>
-
-            </article>
         </>
     )
 }
