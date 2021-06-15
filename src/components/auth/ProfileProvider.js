@@ -17,15 +17,13 @@ export const ProfileProvider = (props) => {
             }
         })
             .then(response => response.json())
-            .then((res) =>console.log(res))
-            .then(setProfile)
+            .then((res) => setProfile(res))         
     }
 
     
-    currentUser = profile.user
 
     return (
-        <ProfileContext.Provider value={{ currentUser, profile, getProfile }}>
+        <ProfileContext.Provider value={{ profile, getProfile }}>
             {props.children}
         </ProfileContext.Provider>
     )

@@ -7,6 +7,8 @@ import { AttractionList } from "./attractions/AttractionList.js"
 import { AttractionProvider } from "./attractions/AttractionProvider.js"
 import { AttractionDetails } from "./attractions/AttractionDetails.js"
 import { SearchAttractionLocations } from "./attractions/Search.js"
+import { PostList } from "./posts/PostList.js"
+import { PostProvider } from "./posts/PostProvider.js"
 
 export const ApplicationViews = () => {
     return <>
@@ -16,7 +18,8 @@ export const ApplicationViews = () => {
         }}>
             <ProfileProvider>
                 <AttractionProvider>
-                    
+                    <PostProvider>
+
                     <Route exact path="/">
                         <Home/>
                     </Route>
@@ -31,12 +34,18 @@ export const ApplicationViews = () => {
 
             
                     {/* ______________posts__________________________ */}
-
+                    <Route exact path="/myposts">
+                        <Profile />
+                        <PostList />
+                    </Route>
                     {/* _________________Profile______________________________ */}
                     <Route exact path="/profile">
                         <Profile />
+                        <PostList />
                     </Route>
+                    
 
+                    </PostProvider>
                 </AttractionProvider>   
             </ProfileProvider>
         </main>
