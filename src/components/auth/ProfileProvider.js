@@ -1,6 +1,6 @@
-import React, { useState } from "react"
+import React, { createContext, useState } from "react"
 
-export const ProfileContext = React.createContext()
+export const ProfileContext = createContext()
 
 export const ProfileProvider = (props) => {
     /*
@@ -11,17 +11,21 @@ export const ProfileProvider = (props) => {
     const [profile, setProfile] = useState({events:[]})
 
     const getProfile = () => {
-        return fetch("http://localhost:8000/profile", {
+        return fetch("http://localhost:8000/profiles", {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("lu_token")}`
             }
         })
             .then(response => response.json())
+            .then((res) =>console.log(res))
             .then(setProfile)
     }
 
+    
+    currentUser = profile.user
+
     return (
-        <ProfileContext.Provider value={{ profile, getProfile }}>
+        <ProfileContext.Provider value={{ currentUser, profile, getProfile }}>
             {props.children}
         </ProfileContext.Provider>
     )
