@@ -9,6 +9,7 @@ import { AttractionDetails } from "./attractions/AttractionDetails.js"
 import { SearchAttractionLocations } from "./attractions/Search.js"
 import { PostList } from "./posts/PostList.js"
 import { PostProvider } from "./posts/PostProvider.js"
+import { PostForm } from "./posts/PostForm.js"
 
 export const ApplicationViews = () => {
     return <>
@@ -34,6 +35,9 @@ export const ApplicationViews = () => {
 
             
                     {/* ______________posts__________________________ */}
+                    <Route exact path="/posts/create">
+                        <PostForm />
+                    </Route>
                     <Route exact path="/myposts">
                         <Profile />
                         <PostList />

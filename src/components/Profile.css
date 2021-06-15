@@ -1,0 +1,8 @@
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.userProfile {
+    display: flex;
+}
