@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect, useRef, useState } from "react"
 import { useHistory, useParams } from 'react-router-dom';
 import { CategoryContext } from "../categories/CategoryProvider";
 import { PostContext } from "./PostProvider";
@@ -22,7 +22,16 @@ export const PostForm = () => {
         if (postId) {
             getPostById(postId)
             .then(post => {
-                setPost(post)
+                setPost({
+                userId: userId,
+                title: post.title,
+                content: post.content,
+                imageUrl: post.image_url,
+                socialStory:post.social_story,
+                visualSchedule: post.visual_schedule,
+                categoryId: post.category.id,
+                approved: true
+                })
                 setIsLoading(false)
             })
         } else {
@@ -40,6 +49,8 @@ export const PostForm = () => {
         categoryId: 0,
         approved: true
     })
+
+    
     
 
     const handleInputChange = (event) => {
@@ -146,9 +157,11 @@ export const PostForm = () => {
             <fieldset>
                 <div className="form-group">
                 <label htmlFor="category_id">Category:<span className="required">*</span></label>
-                <select value={post.category?.id} id="categoryId"
+                <select  id="categoryId"
+                value={post.categoryId}
                 className="form-control"
                 onChange={handleInputChange}>
+                    {/* <option value={post.category?.id}>{post.category?.label}</option> */}
                     <option value="0">Select a Category</option>
                     {categories.map(type => (
                     <option key={type.id} value={type.id}>
