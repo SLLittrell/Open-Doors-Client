@@ -1,11 +1,16 @@
 import React from "react"
+import { Button } from "react-bootstrap"
 import { Link, useHistory } from "react-router-dom"
 import "./NavBar.css"
+
 
 export const NavBar = (props) => {
     const history = useHistory()
     return (
         <ul className="navbar">
+            <li className="navbar__item">
+                <Link className="nav-link" to="/profile">Home</Link>
+            </li>
             <li className="navbar__item">
                 <Link className="nav-link" to="/attractions">Search Attractions</Link>
             </li>
@@ -18,12 +23,12 @@ export const NavBar = (props) => {
             {
                 (localStorage.getItem("lu_token") !== null) ?
                     <li className="navbar__item">
-                        <button className="nav-link fakeLink"
+                        <Button className="btn bg-transparent"
                             onClick={() => {
                                 localStorage.removeItem("lu_token")
                                 history.push({ pathname: "/" })
                             }}
-                        >Logout</button>
+                        >Logout</Button>
                     </li> :
                     <>
                         <li className="nav-item">
