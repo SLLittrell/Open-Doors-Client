@@ -40,6 +40,9 @@ export const ApplicationViews = () => {
                             <Route exact path="/posts/create">
                                 <PostForm />
                             </Route>
+                            <Route exact path="/posts/edit/:postId(\d+)">
+                                <PostForm />
+                            </Route>
                             <Route exact path="/myposts">
                                 <Profile />
                                 <PostList />
