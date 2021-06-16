@@ -5,7 +5,7 @@ import { PostContext } from "./PostProvider";
 
 
 export const PostForm = () => {
-    const{ addPost, getPostById, updatePost} =useContext(PostContext)
+    const{ addPost, getPostById, updatePost, deletePost} =useContext(PostContext)
     const {getCategories, categories}=useContext(CategoryContext)
     
     const userId = parseInt(localStorage.getItem(`open_user_id`))
@@ -77,6 +77,15 @@ export const PostForm = () => {
                 .then(setIsLoading(false))
                 .then(() => history.push("/profile"))
             }
+    }
+
+    const handleDeletePost = (event) => {
+        if(window.confirm("Are you sure you would like to delete this post?")===true){
+            deletePost(event.target.id)
+            .then(() => {
+            history.push("/myposts")
+            })
+        }
     }
 
     
@@ -162,14 +171,14 @@ export const PostForm = () => {
             {postId ? " Save Post " : " Add Post "}
             </button>
             <div className="divider"/>
-            {/* show delete button if editing
+            {/* delete button only if user has access to editing*/}
             {postId ?
             <button type="button" id={postId} className="" onClick={handleDeletePost}>
             Delete Post
             </button>
             :
             <></>
-            } */}
+            }
         </form>
     
     </div>

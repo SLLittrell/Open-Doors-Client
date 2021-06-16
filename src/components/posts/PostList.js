@@ -41,7 +41,6 @@ export const PostList = () => {
                             </Card.Text>
                         </Card.Body>
                         <div>{usersPost ? <button onClick ={() => history.push(`/posts/edit/${title.id}`)}>Edit Post</button> : <></>}</div>
-                        <div>{usersPost ? <button>Delete Post</button> : <></>}</div>
                     </Card>
                     
             )}</div>
