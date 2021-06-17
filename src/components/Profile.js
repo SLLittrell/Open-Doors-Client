@@ -29,13 +29,10 @@ export const Profile = () => {
                     <header>
                         <h1>Welcome {profile.user?.user.first_name} {profile.user?.user.last_name}</h1>
                     </header>
-                    <section className="profile__info">
-                        <div className="profile__username">Username: {profile.user ? profile.user.user.username : <></>}</div>
-                    </section>
                 </article>
                 <section className="userProfile">
                     <article className='user_nav'>
-                    <Nav defaultActiveKey="/home" className="flex-column">
+                    <Nav fill variant = "tabs" defaultActiveKey="/home" className="justify-content-center">
                         <Nav.Link href="/profile">Home</Nav.Link>
                         <Nav.Link href="/library">My Library</Nav.Link>
                         <Nav.Link href="/myposts">My Posts</Nav.Link>

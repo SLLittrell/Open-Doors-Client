@@ -34,7 +34,7 @@ export const ApplicationViews = () => {
                                 <SearchAttractionLocations />
                                 <AttractionList />
                             </Route>
-                            <Route exact path="/attractions/:attractionId(\d+)">
+                            <Route exact path="/attractions/details/:attractionId">
                                 <AttractionDetails />
                             </Route>
 
