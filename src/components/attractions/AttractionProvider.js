@@ -7,6 +7,7 @@ export const AttractionContext = createContext()
 export const AttractionProvider = (props) => {
     const [ attraction, setAttraction ] = useState([])
     const [ local, setLocations ] = useState([])
+    const [details, setDetails] =useState([])
 
 
 
@@ -26,12 +27,21 @@ export const AttractionProvider = (props) => {
             // .then(parsedAttractions => 
             //     setPlaces(parsedAttractions))
     }
+    
+    const getAttractionDetails = (attractionId) => {
+        return fetch(`https://api.opentripmap.com/0.1/en/places/xid/${attractionId}?apikey=${settings.openApiKey}`, {
+        })
+            .then(response => response.json())
+            .then(parsedAttractions => 
+                setDetails(parsedAttractions))
+    }
 
 
 
     const [ searchTerms, setSearchTerms ] = useState("")
     return (
-        <AttractionContext.Provider value={{ getAttractions, setAttraction,attraction, getLocation, local, searchTerms, setSearchTerms }} >
+        <AttractionContext.Provider value={{ getAttractions, setAttraction,attraction, getLocation, 
+        getAttractionDetails, details, local, searchTerms, setSearchTerms }} >
             { props.children }
         </AttractionContext.Provider>
     )

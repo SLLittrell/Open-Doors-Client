@@ -1,8 +1,4 @@
-.flex-column {
+Nav {
     display: flex;
-    flex-direction: column;
-}
-
-.userProfile {
-    display: flex;
+    justify-content: center;
 }

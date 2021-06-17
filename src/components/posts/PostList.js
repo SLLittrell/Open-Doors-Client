@@ -32,8 +32,8 @@ export const PostList = () => {
     return (
         <section className="posts">
             <h2>{history.location.pathname.includes("/my") ? "My Posts" : "Posts"}</h2>
-            <div>{posts.map(title => <Card style={{ width: '50rem' }}>
-                    <Card.Img variant="top" src={title.image_url} width="75%"/>
+            <div>{posts.map(title => <Card key={title.id} style={{ width: '50rem' }}>
+                    <Card.Img variant="top" src={title.image_url} width="25%"/>
                         <Card.Body>
                             <Card.Title>{title.title}</Card.Title>
                             <Card.Text>
