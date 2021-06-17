@@ -27,6 +27,7 @@ export const PostForm = () => {
                 title: post.title,
                 content: post.content,
                 imageUrl: post.image_url,
+                publication_date: post.publication_date,
                 socialStory:post.social_story,
                 visualSchedule: post.visual_schedule,
                 categoryId: post.category.id,
@@ -52,7 +53,7 @@ export const PostForm = () => {
 
     
     
-
+    console.log(post)
     const handleInputChange = (event) => {
         const newPost = { ...post }
         newPost[event.target.id] = event.target.value
@@ -63,15 +64,15 @@ export const PostForm = () => {
         if (postId){
             // PUT - update
             updatePost({
-                id: post.id,
-                user_id: post.user.id,
+                id: postId,
+                user_id: userId,
                 title: post.title,
                 content: post.content,
                 social_story:post.socialStory,
                 visual_schedule:post.visualSchedule,
                 publication_date: post.publication_date,
-                image_url: post.image_url,
-                category_id: post.category.id
+                image_url: post.imageUrl,
+                category_id: post.categoryId
             })
             .then(() => history.push(`/myposts`))
             }else {
@@ -131,7 +132,7 @@ export const PostForm = () => {
                 <input type="text" id="imageUrl" required className="form-control"
                 placeholder="Image URL"
                 onChange={handleInputChange}
-                value={post.image_url}/>
+                value={post.imageUrl}/>
             </div>
             </fieldset>
 

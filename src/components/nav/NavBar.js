@@ -23,7 +23,7 @@ export const NavBar = (props) => {
             {
                 (localStorage.getItem("lu_token") !== null) ?
                     <li className="navbar__item">
-                        <Button className="btn bg-transparent"
+                        <Button className="btn"
                             onClick={() => {
                                 localStorage.removeItem("lu_token")
                                 history.push({ pathname: "/" })
