@@ -11,6 +11,10 @@ import { PostList } from "./posts/PostList.js"
 import { PostProvider } from "./posts/PostProvider.js"
 import { PostForm } from "./posts/PostForm.js"
 import { CategoryProvider } from "./categories/CategoryProvider.js"
+import { StoryForm } from "./stories/StoryFrom.js"
+import { StoryProvider } from "./stories/StoryProvider.js"
+import { Library } from "./stories/Library.js"
+import { StoryView } from "./stories/StoryList.js"
 
 export const ApplicationViews = () => {
     return <>
@@ -22,6 +26,7 @@ export const ApplicationViews = () => {
                 <AttractionProvider>
                     <PostProvider>
                         <CategoryProvider>
+                            <StoryProvider>
 
                             <Route exact path="/">
                                 <Home/>
@@ -52,7 +57,20 @@ export const ApplicationViews = () => {
                                 <Profile />
                                 <PostList />
                             </Route>
-                    
+
+                            {/* ________________Stories___________________________ */}
+                            <Route exact path="/stories/create">
+                                <StoryForm />
+                            </Route>
+                            <Route exact path="/library">
+                                <Profile />
+                                <Library />
+                            </Route>
+                            <Route exact path="/story/:storyId(\d+)">
+                                <StoryView />
+                            </Route>
+
+                            </StoryProvider>
                         </CategoryProvider>
                     </PostProvider>
                 </AttractionProvider>   

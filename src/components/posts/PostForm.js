@@ -1,21 +1,31 @@
 import React, { useContext, useEffect, useRef, useState } from "react"
 import { useHistory, useParams } from 'react-router-dom';
 import { CategoryContext } from "../categories/CategoryProvider";
+import { StoryContext } from "../stories/StoryProvider";
 import { PostContext } from "./PostProvider";
 
 
 export const PostForm = () => {
     const{ addPost, getPostById, updatePost, deletePost} =useContext(PostContext)
     const {getCategories, categories}=useContext(CategoryContext)
+    const {getStories, stories}=useContext(StoryContext)
     
     const userId = parseInt(localStorage.getItem(`open_user_id`))
     const [isLoading, setIsLoading] = useState(true)
+    const [sortStory,setSortStory] =useState([])
     const {postId} = useParams()
     const history = useHistory()
     
-    console.log(postId)
+
     useEffect(() => {
         getCategories()
+    },[])
+
+    useEffect(()=>{
+        getStories()
+        .then(()=> 
+        {const currentUser = stories.filter(story => parseInt(story.user.id)=== userId)
+        setSortStory(currentUser)})
     },[])
 
     useEffect(() => {
@@ -45,7 +55,7 @@ export const PostForm = () => {
         title: "",
         content: "",
         imageUrl: "",
-        socialStory:null,
+        socialStory: 0,
         visualSchedule: null,
         categoryId: 0,
         approved: true
@@ -53,7 +63,6 @@ export const PostForm = () => {
 
     
     
-    console.log(post)
     const handleInputChange = (event) => {
         const newPost = { ...post }
         newPost[event.target.id] = event.target.value
@@ -80,7 +89,7 @@ export const PostForm = () => {
                     user_id: parseInt(post.userId),
                     title: post.title,
                     content: post.content,
-                    social_story:post.socialStory,
+                    social_story:parseInt(post.socialStory),
                     visual_schedule:post.visualSchedule,
                     image_url: post.imageUrl,
                     category_id: parseInt(post.categoryId),
@@ -139,7 +148,17 @@ export const PostForm = () => {
             <fieldset>
             <div className="form-group">
                 <label htmlFor="socialStory">Add a Story: </label>
-                <select id="social_story" className="form-control">
+                <select id="social_story" 
+                value={post.socialStory}
+                className="form-control"
+                onChange={handleInputChange}>
+                    {/* <option value={post.category?.id}>{post.category?.label}</option> */}
+                    <option value="0">Select a Story</option>
+                    {sortStory.map(st => (
+                    <option key={st.id} value={st.id}>
+                        {st.titlepage}
+                    </option>
+                    ))}
                     <option value="0" placeholder='Choose a Story'></option>
                     <option></option>
                 </select>
@@ -148,8 +167,8 @@ export const PostForm = () => {
 
             <fieldset>
             <div className="form-group">
-                <label htmlFor="socialStory">Add a Schedule: </label>
-                <select id="social_story" className="form-control">
+                <label htmlFor="visualSchedule">Add a Schedule: </label>
+                <select id="visual_schedule" className="form-control">
                     <option value="0" placeholder='Choose a Visual Schedule'></option>
                 </select>
             </div>
