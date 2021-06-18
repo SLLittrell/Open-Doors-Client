@@ -106,7 +106,6 @@ export const StoryForm = () => {
                 <Button variant="primary" type="submit" onClick ={createStory}>
                     Submit
                 </Button>
-                
             </Form.Group>
         </>
     )

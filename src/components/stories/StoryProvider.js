@@ -25,14 +25,13 @@ export const StoryProvider = props => {
             body: JSON.stringify(storyObj),
             responseType: 'blob' //Force to receive data in a Blob Format
         })
-        .then(response => {
+        .then((response) => {
             //Create a Blob from the PDF Stream
                 const file = new Blob(
-                  [response.data], 
-                  {type: 'application/pdf'});
+                [response.data], 
+                {type: 'application/pdf'});
 
                 console.log(file)
-
             //Build a URL from the file
                 const fileURL = URL.createObjectURL(file);
             //Open the URL on new Window

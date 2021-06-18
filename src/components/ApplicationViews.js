@@ -13,6 +13,7 @@ import { PostForm } from "./posts/PostForm.js"
 import { CategoryProvider } from "./categories/CategoryProvider.js"
 import { StoryForm } from "./stories/StoryFrom.js"
 import { StoryProvider } from "./stories/StoryProvider.js"
+import { Library } from "./stories/Library.js"
 
 export const ApplicationViews = () => {
     return <>
@@ -59,6 +60,10 @@ export const ApplicationViews = () => {
                             {/* ________________Stories___________________________ */}
                             <Route exact path="/stories/create">
                                 <StoryForm />
+                            </Route>
+                            <Route exact path="/library">
+                                <Profile />
+                                <Library />
                             </Route>
 
                             </StoryProvider>
