@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Card } from 'react-bootstrap'
+import { Button, Card } from 'react-bootstrap'
 import { useHistory } from 'react-router'
 import {StoryContext } from './StoryProvider'
 
 export const Library = () => {
     const {getStories, stories} =useContext(StoryContext)
     const userId = parseInt(localStorage.getItem(`lu_token`))
+    const history =useHistory()
     const [filterStory, setFilterStory] =useState()
 
     useEffect(() =>{
@@ -22,12 +23,13 @@ export const Library = () => {
             <h2>My Social stories</h2>
             <div>
                 {stories.map((story)=> filterStory ? 
-                <Card border="primary" style={{ width: '18rem' }}>
-                    <Card.Header>{story.title}</Card.Header>
-                    <Card.Body>
-                    <Card.Title>{story.pdf}</Card.Title>
-                    </Card.Body>
-                </Card> : <></>)}
+                <Card key ={story.id} style={{ width: '18rem' }}>
+                <Card.Img variant="top" src={story.title_image} />
+                <Card.Body>
+                  <Card.Title>{story.titlepage}</Card.Title>
+                  <Button variant="primary" onClick={()=> history.push(`./story/${story.id}`)}>View Story</Button>
+                </Card.Body>
+              </Card> : <></>)}
             </div>
         </>
     )

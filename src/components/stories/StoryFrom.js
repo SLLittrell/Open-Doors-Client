@@ -7,8 +7,10 @@ import './StoryForm.css'
 export const StoryForm = () => {
     const {addStory} = useContext(StoryContext)
     const attractionId = useParams()
+    const userId = parseInt(localStorage.getItem(`open_user_id`))
 
     const [story, setStory] =useState({
+        user: userId,
         title: "",
         title_image:"",
         page_1_text: "",
@@ -20,9 +22,19 @@ export const StoryForm = () => {
         page_4_text:"",
         page_4_image:"",
         page_5_text:"",
-        page_5_image:""
+        page_5_image:"",
+        page_6_text:"",
+        page_6_image:"",
+        page_7_text:"",
+        page_7_image:"",
+        page_8_text:"",
+        page_8_image:"",
+        page_9_text:"",
+        page_9_image:"",
+        page_10_text:"",
+        page_10_image:""
     })
-
+    
     const handleInputChange = (event) => {
         const newStory = { ...story }
         newStory[event.target.id] = event.target.value
@@ -101,6 +113,61 @@ export const StoryForm = () => {
                     </Col>
                     <Col>
                     <Form.Control onChange={handleInputChange} id="page_5_image" size="lg" type="text" placeholder="Image URL" />
+                    </Col>
+                </Form.Row>
+                <Form.Row className = "page">
+                    <Form.Label column="lg" lg={2}>
+                        Page Six:
+                    </Form.Label>
+                    <Col>
+                    <Form.Control onChange={handleInputChange} id="page_6_text" size="lg" type="text" placeholder="Text" />
+                    </Col>
+                    <Col>
+                    <Form.Control onChange={handleInputChange} id="page_6_image" size="lg" type="text" placeholder="Image URL" />
+                    </Col>
+                </Form.Row>
+                <Form.Row className = "page">
+                    <Form.Label column="lg" lg={2}>
+                        Page Seven:
+                    </Form.Label>
+                    <Col>
+                    <Form.Control onChange={handleInputChange} id="page_7_text" size="lg" type="text" placeholder="Text" />
+                    </Col>
+                    <Col>
+                    <Form.Control onChange={handleInputChange} id="page_7_image" size="lg" type="text" placeholder="Image URL" />
+                    </Col>
+                </Form.Row>
+                <Form.Row className = "page">
+                    <Form.Label column="lg" lg={2}>
+                        Page Eight:
+                    </Form.Label>
+                    <Col>
+                    <Form.Control onChange={handleInputChange} id="page_8_text" size="lg" type="text" placeholder="Text" />
+                    </Col>
+                    <Col>
+                    <Form.Control onChange={handleInputChange} id="page_8_image" size="lg" type="text" placeholder="Image URL" />
+                    </Col>
+                </Form.Row>
+                <Form.Row className = "page">
+                    <Form.Label column="lg" lg={2}>
+                        Page Nine:
+                    </Form.Label>
+                    <Col>
+                    <Form.Control onChange={handleInputChange} id="page_9_text" size="lg" type="text" placeholder="Text" />
+                    </Col>
+                    <Col>
+                    <Form.Control onChange={handleInputChange} id="page_9_image" size="lg" type="text" placeholder="Image URL" />
+                    </Col>
+                </Form.Row>
+                <Form.Row className = "page">
+                    <Form.Label column="lg" lg={2}>
+                        Page Ten:
+                    </Form.Label>
+                    <Col>
+                    <Form.Control onChange={handleInputChange} id="page_10_text" size="lg" type="text" placeholder="Text" />
+                    </Col>
+                    <Col>
+                    <Form.Control onChange={handleInputChange} id="page_10_image" size="lg" type="text" placeholder="Image URL" />
                     </Col>
                 </Form.Row>
                 <Button variant="primary" type="submit" onClick ={createStory}>

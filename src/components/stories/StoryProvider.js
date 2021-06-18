@@ -4,6 +4,7 @@ export const StoryContext = createContext()
 
 export const StoryProvider = props => {
     const [stories, setStories] = useState([])
+    const [story, setStory] = useState({})
 
     const getStories = () => {
         return fetch(`http://localhost:8000/stories`,{
@@ -14,6 +15,16 @@ export const StoryProvider = props => {
             .then(res => res.json())
             .then(setStories)
     }
+    
+    const getStoryById = (storyId) => {
+        return fetch(`http://localhost:8000/stories/${storyId}`,{
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("lu_token")}`
+            }
+        })
+            .then(res => res.json())
+            .then(setStory)
+    }
 
     const addStory = storyObj => {
         return fetch("http://localhost:8000/stories", {
@@ -23,28 +34,13 @@ export const StoryProvider = props => {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(storyObj),
-            responseType: 'blob' //Force to receive data in a Blob Format
         })
-        .then((response) => {
-            //Create a Blob from the PDF Stream
-                const file = new Blob(
-                [response.data], 
-                {type: 'application/pdf'});
-
-                console.log(file)
-            //Build a URL from the file
-                const fileURL = URL.createObjectURL(file);
-            //Open the URL on new Window
-                window.open(fileURL);
-            })
-            .catch(error => {
-                console.log(error);
-            });
+        .then(()=>getStories)
     }
 
     return (
         <StoryContext.Provider value={{
-            addStory, getStories, stories
+            addStory, getStories, stories, getStoryById, story
 
         }}>
             {props.children}

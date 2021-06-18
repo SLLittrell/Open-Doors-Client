@@ -14,6 +14,7 @@ import { CategoryProvider } from "./categories/CategoryProvider.js"
 import { StoryForm } from "./stories/StoryFrom.js"
 import { StoryProvider } from "./stories/StoryProvider.js"
 import { Library } from "./stories/Library.js"
+import { StoryView } from "./stories/StoryList.js"
 
 export const ApplicationViews = () => {
     return <>
@@ -64,6 +65,9 @@ export const ApplicationViews = () => {
                             <Route exact path="/library">
                                 <Profile />
                                 <Library />
+                            </Route>
+                            <Route exact path="/story/:storyId(\d+)">
+                                <StoryView />
                             </Route>
 
                             </StoryProvider>

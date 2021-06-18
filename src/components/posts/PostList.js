@@ -28,7 +28,7 @@ export const PostList = () => {
         }
     },[posts])
 
-    console.log(posts)
+
    const usersPost = history.location.pathname.includes("/my")
     return (
         <section className="posts">
