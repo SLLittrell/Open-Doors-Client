@@ -6,11 +6,12 @@ import './StoryForm.css'
 
 export const StoryForm = () => {
     const {addStory} = useContext(StoryContext)
-    const attractionId = useParams()
+    const {attractionId}= useParams()
     const userId = parseInt(localStorage.getItem(`open_user_id`))
 
     const [story, setStory] =useState({
         user: userId,
+        attraction: attractionId,
         title: "",
         title_image:"",
         page_1_text: "",

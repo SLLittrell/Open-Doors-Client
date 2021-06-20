@@ -73,6 +73,9 @@ export const ApplicationViews = () => {
                                     <Route exact path="/story/:storyId(\d+)">
                                         <StoryView />
                                     </Route>
+                                    <Route exact path="/story/create/:attractionId">
+                                        <StoryForm />
+                                    </Route>
 
                                     {/* _________________Schedule________________ */}
 
