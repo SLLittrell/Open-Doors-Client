@@ -34,7 +34,7 @@ export const AttractionDetails = () => {
                 Visit: <Link>{details.url}</Link>
                 </Card.Body>
             </Card>
-            <Button onClick={()=>history.push('/story/create')}>Create a story</Button>
+            <Button onClick={()=>history.push(`/story/create/${attractionId}`)}>Create a story</Button>
         </>
     )
 }

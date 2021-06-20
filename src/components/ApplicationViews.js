@@ -15,6 +15,9 @@ import { StoryForm } from "./stories/StoryFrom.js"
 import { StoryProvider } from "./stories/StoryProvider.js"
 import { Library } from "./stories/Library.js"
 import { StoryView } from "./stories/StoryList.js"
+import { ScheduleProvider } from "./schedules/ScheduleProvider.js"
+import {ScheduleForm} from "./schedules/ScheduleForm"
+
 
 export const ApplicationViews = () => {
     return <>
@@ -27,49 +30,60 @@ export const ApplicationViews = () => {
                     <PostProvider>
                         <CategoryProvider>
                             <StoryProvider>
+                                <ScheduleProvider>
 
-                            <Route exact path="/">
-                                <Home/>
-                            </Route>
-                            {/* _________________Attractions________________ */}
-                            <Route exact path="/attractions">
-                                <SearchAttractionLocations />
-                                <AttractionList />
-                            </Route>
-                            <Route exact path="/attractions/details/:attractionId">
-                                <AttractionDetails />
-                            </Route>
+                                    <Route exact path="/">
+                                        <Home/>
+                                    </Route>
+                                    {/* _________________Attractions________________ */}
+                                    <Route exact path="/attractions">
+                                        <SearchAttractionLocations />
+                                        <AttractionList />
+                                    </Route>
+                                    <Route exact path="/attractions/details/:attractionId">
+                                        <AttractionDetails />
+                                    </Route>
 
-                    
-                            {/* ______________posts__________________________ */}
-                            <Route exact path="/posts/create">
-                                <PostForm />
-                            </Route>
-                            <Route exact path="/posts/edit/:postId(\d+)">
-                                <PostForm />
-                            </Route>
-                            <Route exact path="/myposts">
-                                <Profile />
-                                <PostList />
-                            </Route>
-                            {/* _________________Profile______________________________ */}
-                            <Route exact path="/profile">
-                                <Profile />
-                                <PostList />
-                            </Route>
+                            
+                                    {/* ______________posts__________________________ */}
+                                    <Route exact path="/posts/create">
+                                        <PostForm />
+                                    </Route>
+                                    <Route exact path="/posts/edit/:postId(\d+)">
+                                        <PostForm />
+                                    </Route>
+                                    <Route exact path="/myposts">
+                                        <Profile />
+                                        <PostList />
+                                    </Route>
+                                    {/* _________________Profile______________________________ */}
+                                    <Route exact path="/profile">
+                                        <Profile />
+                                        <PostList />
+                                    </Route>
 
-                            {/* ________________Stories___________________________ */}
-                            <Route exact path="/stories/create">
-                                <StoryForm />
-                            </Route>
-                            <Route exact path="/library">
-                                <Profile />
-                                <Library />
-                            </Route>
-                            <Route exact path="/story/:storyId(\d+)">
-                                <StoryView />
-                            </Route>
+                                    {/* ________________Stories___________________________ */}
+                                    <Route exact path="/stories/create">
+                                        <StoryForm />
+                                    </Route>
+                                    <Route exact path="/library">
+                                        <Profile />
+                                        <Library />
+                                    </Route>
+                                    <Route exact path="/story/:storyId(\d+)">
+                                        <StoryView />
+                                    </Route>
+                                    <Route exact path="/story/create/:attractionId">
+                                        <StoryForm />
+                                    </Route>
 
+                                    {/* _________________Schedule________________ */}
+
+                                    <Route exact path="/schedules/create">
+                                        <ScheduleForm />
+                                    </Route>
+
+                                </ScheduleProvider>
                             </StoryProvider>
                         </CategoryProvider>
                     </PostProvider>
