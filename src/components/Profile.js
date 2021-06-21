@@ -32,14 +32,14 @@ export const Profile = () => {
                 </article>
                 <section className="userProfile">
                     <article className='user_nav'>
-                    <Nav fill variant = "tabs" defaultActiveKey="/home" className="justify-content-center">
+                    {/* <Nav fill variant = "tabs" defaultActiveKey="/home" className="justify-content-center">
                         <Nav.Link href="/profile">Home</Nav.Link>
                         <Nav.Link href="/library">My Library</Nav.Link>
                         <Nav.Link href="/myposts">My Posts</Nav.Link>
                         <Nav.Link href="/posts/create">Add Post</Nav.Link>
                         <Nav.Link href="/stories/create">Create Social Stories</Nav.Link>
                         <Nav.Link href="/schedules/create">Create Schedules</Nav.Link>
-                    </Nav>
+                    </Nav> */}
                     </article>
                 </section>
         </>
