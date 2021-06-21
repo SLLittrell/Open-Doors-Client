@@ -62,7 +62,7 @@ export const ApplicationViews = () => {
                                     <Route exact path="/post/unapproved/:staffId(\d+)">
                                         <UnapprovedPostList />
                                     </Route>
-                                    <Route exact path="/post/unapproved/:staffId(\d+)/:postId(\d+)/details/">
+                                    <Route exact path="/post/unapproved/:staffId(\d+)/:postId(\d+)/details">
                                         <UnapprovedPostDetails />
                                     </Route>
                                     {/* _________________Profile______________________________ */}

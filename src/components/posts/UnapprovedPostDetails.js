@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Button, Card, Form, FormGroup } from 'react-bootstrap'
-import { useHistory } from 'react-router'
+import { useHistory } from 'react-router-dom'
 import { PostContext } from './PostProvider'
 import "./Post.css"
 import { useParams } from 'react-router-dom'
@@ -17,6 +17,7 @@ export const UnapprovedPostDetails = () => {
         getPostById(postId)
         
     },[])
+
     const [approval, setApproval] = useState({})
     useEffect(() =>{
         setApproval({
@@ -32,12 +33,14 @@ export const UnapprovedPostDetails = () => {
         approved: false
         })  
         
-    },[post])
+    },[post, postId])
 
     
     const approvePost = () => {
+        console.log(staffId)
        updatePost(approval)
-       .then(() => history.push(`/admin/${staffId}`))
+       .then(() =>history.push(`/admin/${staffId}`))
+       
     }
 
     return ( 
@@ -79,7 +82,7 @@ export const UnapprovedPostDetails = () => {
                                 <Form.Label>Reason for NOT approving:</Form.Label>
                                 <Form.Control as="textarea" rows={3} id="nonApproval"/>
                             </Form.Group>
-                            <Button variant="primary" type="submit" onClick={approvePost}>
+                            <Button variant="primary" onClick={approvePost}>
                                 Submit
                             </Button>
                             </Form>

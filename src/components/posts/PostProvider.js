@@ -23,7 +23,7 @@ export const PostProvider = props => {
             }
         })
             .then(res => res.json())
-            .then((res) => setPost(res))
+                .then((res) => setPost(res))
             
     }
             
