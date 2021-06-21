@@ -4,6 +4,7 @@ export const PostContext = createContext()
 
 export const PostProvider = props => {
     const [posts, setPosts] = useState([])
+    const [post, setPost] = useState([])
     const [ searchTerms, setSearchTerms ] = useState("")
 
     const getPosts = () => {
@@ -22,8 +23,10 @@ export const PostProvider = props => {
             }
         })
             .then(res => res.json())
+                .then((res) => setPost(res))
             
     }
+            
 
     const addPost = postObj => {
         return fetch("http://localhost:8000/posts", {
@@ -57,13 +60,14 @@ export const PostProvider = props => {
             }
         })
             .then(getPosts)
+            .then(setPost)
     }
 
     
 
     return (
         <PostContext.Provider value={{
-            posts, getPosts, getPostById, addPost, updatePost, deletePost, searchTerms, setSearchTerms
+            posts, getPosts, getPostById,post, addPost, updatePost, deletePost, searchTerms, setSearchTerms
         }}>
             {props.children}
         </PostContext.Provider>

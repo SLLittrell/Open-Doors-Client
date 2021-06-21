@@ -4,7 +4,7 @@ import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
 import { ApplicationViews } from "./ApplicationViews";
 import { NavBar } from "./nav/NavBar";
-
+import { ProfileProvider } from "./auth/ProfileProvider";
 
 
 export const OpenDoors = () => (
@@ -13,7 +13,9 @@ export const OpenDoors = () => (
           if (localStorage.getItem("lu_token")) {
             return (
               <>
+              <ProfileProvider>
                 <NavBar />
+              </ProfileProvider>
                 <ApplicationViews />
               </>
             )

@@ -19,32 +19,31 @@ export const PostForm = () => {
 
     useEffect(() => {
         getCategories()
+        .then(()=> getStories() )
     },[])
 
     useEffect(()=>{
-        getStories()
-        .then(()=> 
-        {const currentUser = stories.filter(story => parseInt(story.user.id)=== userId)
-        setSortStory(currentUser)})
-    },[])
+        const currentUser = stories.filter(story => parseInt(story.user.id)=== userId)
+        setSortStory(currentUser)
+    },[stories])
 
     useEffect(() => {
         if (postId) {
             getPostById(postId)
-            .then(post => {
-                setPost({
-                userId: userId,
-                title: post.title,
-                content: post.content,
-                imageUrl: post.image_url,
-                publication_date: post.publication_date,
-                socialStory:post.social_story,
-                visualSchedule: post.visual_schedule,
-                categoryId: post.category.id,
-                approved: true
+                .then(post => {
+                    setPost({
+                    userId: post.user,
+                    title: post.title,
+                    content: post.content,
+                    imageUrl: post.image_url,
+                    publication_date: post.publication_date,
+                    socialStory:post.social_story,
+                    visualSchedule: post.visual_schedule,
+                    categoryId: post.category.id,
+                    approved: post.approved
+                    })
+                    setIsLoading(false)
                 })
-                setIsLoading(false)
-            })
         } else {
             setIsLoading(false)
         }
@@ -58,7 +57,7 @@ export const PostForm = () => {
         socialStory: 0,
         visualSchedule: null,
         categoryId: 0,
-        approved: true
+        approved: false
     })
 
     
@@ -148,13 +147,12 @@ export const PostForm = () => {
             <fieldset>
             <div className="form-group">
                 <label htmlFor="socialStory">Add a Story: </label>
-                <select id="social_story" 
+                <select id="socialStory" 
                 value={post.socialStory}
                 className="form-control"
                 onChange={handleInputChange}>
-                    {/* <option value={post.category?.id}>{post.category?.label}</option> */}
                     <option value="0">Select a Story</option>
-                    {sortStory.map(st => (
+                    {sortStory?.map(st => (
                     <option key={st.id} value={st.id}>
                         {st.titlepage}
                     </option>
