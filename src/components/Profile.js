@@ -1,5 +1,6 @@
 import React, { useEffect, useContext, useState } from "react"
 import { Nav } from "react-bootstrap"
+import ModalHeader from "react-bootstrap/esm/ModalHeader"
 import { Link } from "react-router-dom"
 import { ProfileContext } from "./auth/ProfileProvider"
 import "./Profile.css"
@@ -26,8 +27,8 @@ export const Profile = () => {
         <>
             
                 <article className="profile">
-                    <header>
-                        <h1>Welcome {profile.user?.user.first_name} {profile.user?.user.last_name}</h1>
+                    <header className="profileHeader">
+                    <h1>Welcome<br></br> {profile.user?.user.first_name} {profile.user?.user.last_name}</h1>
                     </header>
                 </article>
         </>
