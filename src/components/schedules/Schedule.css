@@ -1,0 +1,24 @@
+
+
+.schedRow {
+    border: black;
+}
+
+.scheduleTitle {
+    text-align: center;
+    margin-bottom: 75px;
+    text-decoration-line: underline;
+}
+
+.activity {
+    margin-left: 25%;
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 5px solid rgba(0, 0, 0, 0.815);
+  }
+  
+

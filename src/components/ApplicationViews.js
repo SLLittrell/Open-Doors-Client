@@ -17,7 +17,7 @@ import { Library } from "./stories/Library.js"
 import { StoryView } from "./stories/StoryList.js"
 import { ScheduleProvider } from "./schedules/ScheduleProvider.js"
 import {ScheduleForm} from "./schedules/ScheduleForm"
-
+import { ScheduleView } from "./schedules/ScheduleList.js"
 
 export const ApplicationViews = () => {
     return <>
@@ -81,6 +81,9 @@ export const ApplicationViews = () => {
 
                                     <Route exact path="/schedules/create">
                                         <ScheduleForm />
+                                    </Route>
+                                    <Route exact path="/schedule/:scheduleId(\d+)">
+                                        <ScheduleView />
                                     </Route>
 
                                 </ScheduleProvider>
