@@ -5,9 +5,9 @@ import { PostContext } from './PostProvider'
 import "./Post.css"
 
 
-export const PostList = () => {
+export const UnapprovedPostList = () => {
     const { posts, getPosts } = useContext(PostContext)
-    const [myposts, setMyPosts] =useState()
+    const [unposts, setUnPosts] =useState()
     const userId = parseInt(localStorage.getItem(`lu_token`))
     const history = useHistory()
     // Get posts from provider
@@ -16,16 +16,13 @@ export const PostList = () => {
     },[])
 
     useEffect(() => {
-        // sort post by date newest to oldest
-        const sortedPosts = posts.sort((a, b) => new Date(b.publication_date) - new Date(a.publication_date))
+        // sort post by date oldest to newest
+        const sortedPosts = posts.sort((a, b) => new Date(a.publication_date) - new Date(b.publication_date))
 
-        // Filtering posts by current user and url path
-        if(history.location.pathname.includes("/my")){
-            const currentUser = sortedPosts.filter(post => parseInt(post.user.id)=== userId)
-            setMyPosts(currentUser)
-        } else {
-            setMyPosts(sortedPosts)
-        }
+        // Filtering posts by approval
+            const unapproved = sortedPosts.filter(post => post.approved=== false)
+            setUnPosts(unapproved)
+       
     },[posts])
 
 
@@ -33,7 +30,7 @@ export const PostList = () => {
     return ( 
         <>
         <section className="posts">
-            <h2>{history.location.pathname.includes("/my") ? "My Posts" : "Posts"}</h2>
+            <h2>Posts Waiting for Approval</h2>
             <div className="postCard">{posts.map(title => <Card key={title.id} style={{ width: '50rem' }}>
                     <Card.Img variant="top" src={title.image_url}/>
                         <Card.Body>

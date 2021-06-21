@@ -18,6 +18,8 @@ import { StoryView } from "./stories/StoryList.js"
 import { ScheduleProvider } from "./schedules/ScheduleProvider.js"
 import {ScheduleForm} from "./schedules/ScheduleForm"
 import { ScheduleView } from "./schedules/ScheduleList.js"
+import { AdminPortal } from "./auth/AdminPortal.js"
+import { UnapprovedPostList } from "./posts/UnapprovedPost.js"
 
 export const ApplicationViews = () => {
     return <>
@@ -56,6 +58,9 @@ export const ApplicationViews = () => {
                                         <Profile />
                                         <PostList />
                                     </Route>
+                                    <Route exact path="/post/unapproved/:staffId(\d+)">
+                                        <UnapprovedPostList />
+                                    </Route>
                                     {/* _________________Profile______________________________ */}
                                     <Route exact path="/profile">
                                         <Profile />
@@ -85,6 +90,11 @@ export const ApplicationViews = () => {
                                     <Route exact path="/schedule/:scheduleId(\d+)">
                                         <ScheduleView />
                                     </Route>
+                                    {/* _________________Admin_____________________ */}
+                                    <Route exact path="/admin/:staffId(\d+)">
+                                        <AdminPortal/>
+                                    </Route>
+
 
                                 </ScheduleProvider>
                             </StoryProvider>

@@ -19,14 +19,13 @@ export const PostForm = () => {
 
     useEffect(() => {
         getCategories()
+        .then(()=> getStories() )
     },[])
 
     useEffect(()=>{
-        getStories()
-        .then(()=> 
-        {const currentUser = stories.filter(story => parseInt(story.user.id)=== userId)
-        setSortStory(currentUser)})
-    },[])
+        const currentUser = stories.filter(story => parseInt(story.user.id)=== userId)
+        setSortStory(currentUser)
+    },[stories])
 
     useEffect(() => {
         if (postId) {
@@ -58,7 +57,7 @@ export const PostForm = () => {
         socialStory: 0,
         visualSchedule: null,
         categoryId: 0,
-        approved: true
+        approved: false
     })
 
     
@@ -152,9 +151,8 @@ export const PostForm = () => {
                 value={post.socialStory}
                 className="form-control"
                 onChange={handleInputChange}>
-                    {/* <option value={post.category?.id}>{post.category?.label}</option> */}
                     <option value="0">Select a Story</option>
-                    {sortStory.map(st => (
+                    {sortStory?.map(st => (
                     <option key={st.id} value={st.id}>
                         {st.titlepage}
                     </option>

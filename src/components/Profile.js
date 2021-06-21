@@ -30,18 +30,6 @@ export const Profile = () => {
                         <h1>Welcome {profile.user?.user.first_name} {profile.user?.user.last_name}</h1>
                     </header>
                 </article>
-                <section className="userProfile">
-                    <article className='user_nav'>
-                    {/* <Nav fill variant = "tabs" defaultActiveKey="/home" className="justify-content-center">
-                        <Nav.Link href="/profile">Home</Nav.Link>
-                        <Nav.Link href="/library">My Library</Nav.Link>
-                        <Nav.Link href="/myposts">My Posts</Nav.Link>
-                        <Nav.Link href="/posts/create">Add Post</Nav.Link>
-                        <Nav.Link href="/stories/create">Create Social Stories</Nav.Link>
-                        <Nav.Link href="/schedules/create">Create Schedules</Nav.Link>
-                    </Nav> */}
-                    </article>
-                </section>
         </>
     )
 }
