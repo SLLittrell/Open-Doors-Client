@@ -4,6 +4,7 @@ import { useHistory } from 'react-router'
 import { AttractionContext } from '../attractions/AttractionProvider'
 import { ScheduleContext } from '../schedules/ScheduleProvider'
 import {StoryContext } from './StoryProvider'
+import './library.css'
 
 export const Library = () => {
     const {getStories, stories} =useContext(StoryContext)
@@ -29,21 +30,21 @@ export const Library = () => {
     },[schedules])
 
     return (
-        <>
-            <h2>My Social Stories</h2>
+        <>  
+            <h2 className='header libraryStory'>My Social Stories</h2>
             <Row>
                 <Col>
-                {stories.map((story)=> filterStory ? 
-                <Card key ={story.id} style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={story.title_image} />
+                {filterStory ? 
+                <Card key ={filterStory.id} style={{ width: '18rem' }}>
+                <Card.Img variant="top" src={filterStory.title_image} />
                 <Card.Body>
-                  <Card.Title>{story.titlepage}</Card.Title>
-                  <Button variant="primary" onClick={()=> history.push(`./story/${story.id}`)}>View Story</Button>
+                  <Card.Title>{filterStory.titlepage}</Card.Title>
+                  <Button variant="primary" onClick={()=> history.push(`./story/${filterStory.id}`)}>View Story</Button>
                 </Card.Body>        
-              </Card> : <></>)}
+              </Card> : <></>}
               </Col>
               <Col>
-              <h2>My Visual Schedules</h2>
+              <h2 className="header">My Visual Schedules</h2>
               {filterSchedule?.map((sched)=>
               <Card key ={sched.id} style={{ width: '18rem' }}>
               <Card.Img variant="top" src={sched.image_1} />

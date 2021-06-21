@@ -4,7 +4,6 @@ export const PostContext = createContext()
 
 export const PostProvider = props => {
     const [posts, setPosts] = useState([])
-    const [post, setPost] = useState([])
     const [ searchTerms, setSearchTerms ] = useState("")
 
     const getPosts = () => {
@@ -23,7 +22,7 @@ export const PostProvider = props => {
             }
         })
             .then(res => res.json())
-                .then((res) => setPost(res))
+                
             
     }
             
@@ -60,14 +59,14 @@ export const PostProvider = props => {
             }
         })
             .then(getPosts)
-            .then(setPost)
+            .then(setPosts)
     }
 
     
 
     return (
         <PostContext.Provider value={{
-            posts, getPosts, getPostById,post, addPost, updatePost, deletePost, searchTerms, setSearchTerms
+            posts, getPosts, getPostById, addPost, updatePost, deletePost, searchTerms, setSearchTerms
         }}>
             {props.children}
         </PostContext.Provider>

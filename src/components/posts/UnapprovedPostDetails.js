@@ -6,7 +6,8 @@ import "./Post.css"
 import { useParams } from 'react-router-dom'
 
 export const UnapprovedPostDetails = () => {
-    const { updatePost, getPostById, post} = useContext(PostContext)
+    const { updatePost, getPostById} = useContext(PostContext)
+    const [post, setPost] = useState({})
     const history = useHistory()
     const {postId} = useParams()
     const {staffId} = useParams()
@@ -15,6 +16,7 @@ export const UnapprovedPostDetails = () => {
     // Get posts from provider
     useEffect(() =>{
         getPostById(postId)
+            .then((res) => setPost(res))
         
     },[])
 
