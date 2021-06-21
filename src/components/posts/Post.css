@@ -1,7 +1,7 @@
 
 .postCard {
-    margin-top: 40px;
-    margin-left: 23rem;
+    margin:auto;
+    position: relative;
 }
 .posts {
     text-align: center;

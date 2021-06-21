@@ -17,7 +17,7 @@ export const Register = (props) => {
 
         if (password.current.value === verifyPassword.current.value) {
             const newUser = {
-                "username": username.current.value,
+                "user_name": username.current.value,
                 "first_name": firstName.current.value,
                 "last_name": lastName.current.value,
                 "email": email.current.value,
@@ -36,6 +36,7 @@ export const Register = (props) => {
                 .then(res => {
                     if ("token" in res) {
                         localStorage.setItem("lu_token", res.token)
+                        localStorage.setItem("open_user_id", res.userId )
                         history.push("/profile")
                     }
                 })
@@ -76,7 +77,7 @@ export const Register = (props) => {
                 </fieldset>
                 <fieldset>
                     <label htmlFor="inputUsername"> Username </label>
-                    <textarea ref={username} name="username" className="form-control" placeholder="" />
+                    <input ref={username} type="text" name="username" className="form-control" placeholder="" />
                 </fieldset>
                 <fieldset style={{
                     textAlign: "center"
