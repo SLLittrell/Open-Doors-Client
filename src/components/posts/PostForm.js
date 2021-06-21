@@ -30,20 +30,20 @@ export const PostForm = () => {
     useEffect(() => {
         if (postId) {
             getPostById(postId)
-            .then(post => {
-                setPost({
-                userId: userId,
-                title: post.title,
-                content: post.content,
-                imageUrl: post.image_url,
-                publication_date: post.publication_date,
-                socialStory:post.social_story,
-                visualSchedule: post.visual_schedule,
-                categoryId: post.category.id,
-                approved: true
+                .then(post => {
+                    setPost({
+                    userId: post.user,
+                    title: post.title,
+                    content: post.content,
+                    imageUrl: post.image_url,
+                    publication_date: post.publication_date,
+                    socialStory:post.social_story,
+                    visualSchedule: post.visual_schedule,
+                    categoryId: post.category.id,
+                    approved: post.approved
+                    })
+                    setIsLoading(false)
                 })
-                setIsLoading(false)
-            })
         } else {
             setIsLoading(false)
         }
