@@ -147,7 +147,7 @@ export const PostForm = () => {
             <fieldset>
             <div className="form-group">
                 <label htmlFor="socialStory">Add a Story: </label>
-                <select id="social_story" 
+                <select id="socialStory" 
                 value={post.socialStory}
                 className="form-control"
                 onChange={handleInputChange}>

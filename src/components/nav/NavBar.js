@@ -10,10 +10,12 @@ export const NavBar = (props) => {
     const { profile, getProfile } = useContext(ProfileContext)
     const [isStaff, setIsStaff] = useState()
 
+    // Get Profile of current user
     useEffect(() => {
         getProfile()
     }, [])
-    console.log(profile)
+
+    // Check to see if user is staff for admin privileges
     useEffect(()=>{
          if(profile.user?.user.is_staff === true){
             setIsStaff(true)
@@ -22,7 +24,7 @@ export const NavBar = (props) => {
     },[profile])
 
     return (
-        <nav class="menu" tabindex="0">
+        <nav className="menu" tabIndex="0">
         <ul className="navbar">
             <li tabIndex="1" className="icon-users">
                 <Nav.Link className="nav-link" href="/profile">Home</Nav.Link>
@@ -56,6 +58,7 @@ export const NavBar = (props) => {
             <li tabIndex="7" className="icon-dashboard">
                 <Nav.Link className="nav-link" href="/posts/create">Add Post</Nav.Link>
             </li>
+            {/* If Staff show link to admin portal */}
             {isStaff ? <li tabIndex="8" className="icon-dashboard">
                 <Nav.Link className="nav-link" href={`/admin/${profile.user?.user.id}`}>Admin Portal</Nav.Link>
             </li>: <></>}
@@ -63,11 +66,11 @@ export const NavBar = (props) => {
                
             {
                 (localStorage.getItem("lu_token") !== null) ?
-                    <li tabindex="5"  class="icon-logout">
+                    <li tabIndex="5"  className="icon-logout">
                            <Link className="nav-link" onClick={() => {
                                 localStorage.removeItem("lu_token")
                                 history.push({ pathname: "/" })
-                            }}>
+                            }} to='/'>
                         Logout</Link>
                     </li> :
                     <>

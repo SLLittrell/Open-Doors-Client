@@ -20,6 +20,7 @@ import {ScheduleForm} from "./schedules/ScheduleForm"
 import { ScheduleView } from "./schedules/ScheduleList.js"
 import { AdminPortal } from "./auth/AdminPortal.js"
 import { UnapprovedPostList } from "./posts/UnapprovedPost.js"
+import { UnapprovedPostDetails } from "./posts/UnapprovedPostDetails.js"
 
 export const ApplicationViews = () => {
     return <>
@@ -60,6 +61,9 @@ export const ApplicationViews = () => {
                                     </Route>
                                     <Route exact path="/post/unapproved/:staffId(\d+)">
                                         <UnapprovedPostList />
+                                    </Route>
+                                    <Route exact path="/post/unapproved/:staffId(\d+)/:postId(\d+)/details/">
+                                        <UnapprovedPostDetails />
                                     </Route>
                                     {/* _________________Profile______________________________ */}
                                     <Route exact path="/profile">
