@@ -18,7 +18,6 @@ export const ScheduleView = () => {
 
     return (
         <>
-        
             <h1 className="scheduleTitle">{singleSched.title}</h1>
             <div></div>
             <Container>
