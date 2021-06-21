@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react"
 import { useHistory, useParams } from 'react-router-dom';
 import { CategoryContext } from "../categories/CategoryProvider";
+import { ScheduleContext } from "../schedules/ScheduleProvider";
 import { StoryContext } from "../stories/StoryProvider";
 import { PostContext } from "./PostProvider";
 
@@ -9,10 +10,12 @@ export const PostForm = () => {
     const{ addPost, getPostById, updatePost, deletePost} =useContext(PostContext)
     const {getCategories, categories}=useContext(CategoryContext)
     const {getStories, stories}=useContext(StoryContext)
+    const {getSchedules, schedules}=useContext(ScheduleContext)
     
     const userId = parseInt(localStorage.getItem(`open_user_id`))
     const [isLoading, setIsLoading] = useState(true)
     const [sortStory,setSortStory] =useState([])
+    const [sortSchedule,setSortSchedule] =useState([])
     const {postId} = useParams()
     const history = useHistory()
     
@@ -20,12 +23,15 @@ export const PostForm = () => {
     useEffect(() => {
         getCategories()
         .then(()=> getStories() )
+            .then(()=> getSchedules())
     },[])
 
     useEffect(()=>{
-        const currentUser = stories.filter(story => parseInt(story.user.id)=== userId)
-        setSortStory(currentUser)
-    },[stories])
+        const currentUserStories = stories.filter(story => parseInt(story.user.id)=== userId)
+        setSortStory(currentUserStories)
+        const currentUserSchedules = schedules.filter(sched => parseInt(sched.user.id)=== userId)
+        setSortSchedule(currentUserSchedules)
+    },[stories, schedules])
 
     useEffect(() => {
         if (postId) {
@@ -55,7 +61,7 @@ export const PostForm = () => {
         content: "",
         imageUrl: "",
         socialStory: 0,
-        visualSchedule: null,
+        visualSchedule: 0,
         categoryId: 0,
         approved: false
     })
@@ -89,7 +95,7 @@ export const PostForm = () => {
                     title: post.title,
                     content: post.content,
                     social_story:parseInt(post.socialStory),
-                    visual_schedule:post.visualSchedule,
+                    visual_schedule:parseInt(post.visualSchedule),
                     image_url: post.imageUrl,
                     category_id: parseInt(post.categoryId),
                     approved: post.approved
@@ -166,8 +172,16 @@ export const PostForm = () => {
             <fieldset>
             <div className="form-group">
                 <label htmlFor="visualSchedule">Add a Schedule: </label>
-                <select id="visual_schedule" className="form-control">
-                    <option value="0" placeholder='Choose a Visual Schedule'></option>
+                <select id="visualSchedule"
+                className="form-control"
+                value={post.visualSchedule}
+                onChange={handleInputChange}>
+                    <option value="0">Choose a Visual Schedule</option>
+                    {sortSchedule?.map(sc => (
+                    <option key={sc.id} value={sc.id}>
+                        {sc.title}
+                    </option>
+                    ))}
                 </select>
             </div>
             </fieldset>
