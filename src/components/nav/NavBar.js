@@ -60,10 +60,10 @@ export const NavBar = (props) => {
             
                
             {
-                (localStorage.getItem("lu_token") !== null) ?
+                (localStorage.getItem("open_token") !== null) ?
                     <li tabIndex="5"  className="icon-logout">
                            <Link className="nav-link" onClick={() => {
-                                localStorage.removeItem("lu_token")
+                                localStorage.removeItem("open_token")
                                 history.push({ pathname: "/" })
                             }} to='/'>
                         Logout</Link>

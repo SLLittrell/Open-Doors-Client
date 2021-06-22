@@ -9,7 +9,7 @@ export const ScheduleProvider = props => {
     const getSchedules = () => {
         return fetch(`http://localhost:8000/schedules`,{
             headers: {
-                "Authorization": `Token ${localStorage.getItem("lu_token")}`
+                "Authorization": `Token ${localStorage.getItem("open_token")}`
             }
         })
             .then(res => res.json())
@@ -19,7 +19,7 @@ export const ScheduleProvider = props => {
     const getScheduleById = (scheduleId) => {
         return fetch(`http://localhost:8000/schedules/${scheduleId}`,{
             headers: {
-                "Authorization": `Token ${localStorage.getItem("lu_token")}`
+                "Authorization": `Token ${localStorage.getItem("open_token")}`
             }
         })
             .then(res => res.json())
@@ -30,7 +30,7 @@ export const ScheduleProvider = props => {
         return fetch("http://localhost:8000/schedules", {
             method: "POST",
             headers: {
-                "Authorization": `Token ${localStorage.getItem("lu_token")}`,
+                "Authorization": `Token ${localStorage.getItem("open_token")}`,
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(scheduleObj),
@@ -42,7 +42,7 @@ export const ScheduleProvider = props => {
         return fetch(`http://localhost:8000/schedules/${schedule.id}`, {
             method: "PUT",
             headers: {
-                "Authorization": `Token ${localStorage.getItem("lu_token")}`,
+                "Authorization": `Token ${localStorage.getItem("open_token")}`,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(schedule)
@@ -54,7 +54,7 @@ export const ScheduleProvider = props => {
         return fetch(`http://localhost:8000/schedules/${scheduleId}`, {
             method: "DELETE",
             headers: {
-                "Authorization": `Token ${localStorage.getItem("lu_token")}`
+                "Authorization": `Token ${localStorage.getItem("open_token")}`
             }
         })
             .then(getSchedules)

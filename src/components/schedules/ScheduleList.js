@@ -7,7 +7,7 @@ import './Schedule.css'
 
 export const ScheduleView = () => {
     const {getScheduleById, singleSched} =useContext(ScheduleContext)
-    const userId = parseInt(localStorage.getItem(`lu_token`))
+    const userId = parseInt(localStorage.getItem(`open_token`))
     const {scheduleId} = useParams()
    
 

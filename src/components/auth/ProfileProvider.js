@@ -9,7 +9,7 @@ export const ProfileProvider = (props) => {
     const getProfile = () => {
         return fetch("http://localhost:8000/profiles", {
             headers: {
-                "Authorization": `Token ${localStorage.getItem("lu_token")}`
+                "Authorization": `Token ${localStorage.getItem("open_token")}`
             }
         })
             .then(response => response.json())

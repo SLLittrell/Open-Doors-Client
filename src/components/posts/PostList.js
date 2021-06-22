@@ -21,7 +21,6 @@ export const PostList = () => {
         // Filtering posts by current user and url path
         if(history.location.pathname.includes("/my")){
             const currentUser = sortedPosts?.filter(post => parseInt(post.user.id)=== userId)
-            console.log(currentUser)
             setMyPosts(currentUser)
         } else {
             setMyPosts(approvedPosts)
