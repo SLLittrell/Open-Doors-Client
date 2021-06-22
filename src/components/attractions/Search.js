@@ -1,21 +1,24 @@
 import React, { useContext, useEffect, useState } from "react"
 import { AttractionContext } from "./AttractionProvider"
 import { AttractionList } from "./AttractionList"
+import { Button } from "react-bootstrap"
+
 
 
 export const SearchAttractionLocations = () => {
-    const {setSearchTerms, getLocation, local, getAttraction}=useContext(AttractionContext)
+    const {setSearchTerms}=useContext(AttractionContext)
 
+    const [search, setSearch] = useState("")
     
-    useEffect(() => {
-        getLocation()
-    },[])
+    const handleSearch = () =>{
+        setSearchTerms(search)
+    }
 
     return (
         <>
             <fieldset>
-               <label forhtml="search">Search for Attractions: <input type="text" id="search" placeholder ="City" onKeyUpCapture={(event) =>setSearchTerms(event.target.value)}/></label> 
-                <button onClick={() => getLocation()}>Search</button>
+               <label forhtml="search">Search for Attractions: <input type="text" id="search" placeholder ="City" onChange={(event) =>setSearch(event.target.value)}/></label> 
+                <Button onClick={handleSearch}>Search</Button>
             </fieldset>
         </>
     )

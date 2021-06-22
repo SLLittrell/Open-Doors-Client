@@ -28,7 +28,6 @@ export const PostList = () => {
         }
     },[posts])
 
-    console.log()
    const usersPost = history.location.pathname.includes("/my")
     return ( 
         <>
@@ -45,6 +44,7 @@ export const PostList = () => {
                             {title.social_story ? <Button onClick={()=>history.push(`/story/${title.social_story.id}`)}>View My Social Story</Button>: <></>}<br></br>
                             {title.visual_schedule ? <Button onClick={()=>history.push(`/schedule/${title.visual_schedule.id}`)}>View My Visual Schedule</Button>: <></>}
                         </Card.Body>
+                        <div className="notApproved">{title.approved === false ? "*This post has not been approved": <></>}</div>
                         <div>{usersPost ? <button onClick ={() => history.push(`/posts/edit/${title.id}`)}>Edit Post</button> : <></>}</div>
                     </Card>
                     
