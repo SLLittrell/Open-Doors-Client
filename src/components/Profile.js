@@ -28,7 +28,9 @@ export const Profile = () => {
             
                 <article className="profile">
                     <header className="profileHeader">
-                    <h1>Welcome<br></br> {profile.user?.user.first_name} {profile.user?.user.last_name}</h1>
+                    <nav>
+                        <h4>{profile.user?.user.first_name}</h4>
+                    </nav> 
                     </header>
                 </article>
         </>

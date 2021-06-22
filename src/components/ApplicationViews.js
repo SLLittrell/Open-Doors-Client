@@ -11,7 +11,7 @@ import { PostList } from "./posts/PostList.js"
 import { PostProvider } from "./posts/PostProvider.js"
 import { PostForm } from "./posts/PostForm.js"
 import { CategoryProvider } from "./categories/CategoryProvider.js"
-import { StoryForm } from "./stories/StoryFrom.js"
+import { StoryForm } from "./stories/StoryForm.js"
 import { StoryProvider } from "./stories/StoryProvider.js"
 import { Library } from "./stories/Library.js"
 import { StoryView } from "./stories/StoryList.js"
@@ -21,11 +21,13 @@ import { ScheduleView } from "./schedules/ScheduleList.js"
 import { AdminPortal } from "./auth/AdminPortal.js"
 import { UnapprovedPostList } from "./posts/UnapprovedPost.js"
 import { UnapprovedPostDetails } from "./posts/UnapprovedPostDetails.js"
+import { StoryResource } from "./stories/StoryResource.js"
+import { ScheduleResource } from "./schedules/ScheduleResource.js"
 
 export const ApplicationViews = () => {
     return <>
         <main style={{
-            margin: "5rem 2rem",
+            margin: "2rem 2rem",
             lineHeight: "1.75rem"
         }}>
             <ProfileProvider>
@@ -36,6 +38,7 @@ export const ApplicationViews = () => {
                                 <ScheduleProvider>
 
                                     <Route exact path="/">
+                                        <Profile />
                                         <Home/>
                                     </Route>
                                     {/* _________________Attractions________________ */}
@@ -56,7 +59,6 @@ export const ApplicationViews = () => {
                                         <PostForm />
                                     </Route>
                                     <Route exact path="/myposts">
-                                        <Profile />
                                         <PostList />
                                     </Route>
                                     <Route exact path="/post/unapproved/:staffId(\d+)">
@@ -72,6 +74,9 @@ export const ApplicationViews = () => {
                                     </Route>
 
                                     {/* ________________Stories___________________________ */}
+                                    <Route exact path="/stories">
+                                        <StoryResource />
+                                    </Route>
                                     <Route exact path="/stories/create">
                                         <StoryForm />
                                     </Route>
@@ -88,6 +93,9 @@ export const ApplicationViews = () => {
 
                                     {/* _________________Schedule________________ */}
 
+                                    <Route exact path="/schedules">
+                                        <ScheduleResource />
+                                    </Route>
                                     <Route exact path="/schedules/create">
                                         <ScheduleForm />
                                     </Route>

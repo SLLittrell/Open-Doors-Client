@@ -6,6 +6,9 @@ import Button from 'react-bootstrap/Button'
 
 export const AttractionDetails = () => {
     const{getAttractionDetails, details} = useContext(AttractionContext)
+
+    const [url, setUrl] = useState()
+    const [splitUrl, setSplitUrl] = useState()
     const {attractionId} =useParams()
     const history = useHistory()
 
@@ -14,7 +17,20 @@ export const AttractionDetails = () => {
         getAttractionDetails(attractionId)
     },[])
 
-    console.log(attractionId)
+    // useEffect(() => {
+    //    const [url1, url2] = details.url.split(";")
+    //     setUrl(url2) 
+    // },[details])
+
+
+    // useEffect(() =>{
+    // if(url !== ""){
+    // const [url1, url2] = url.split(";")
+    //     setSplitUrl(url1)
+    // }
+    // },[url])
+        
+
     return(
         <>
             <Card>
@@ -31,7 +47,7 @@ export const AttractionDetails = () => {
                 <Card.Text>
                     Address: {details.address?.house_number}{details.address?.road} {details.address?.city} {details.address?.state}
                 </Card.Text>
-                Visit: <Link>{details.url}</Link>
+                Visit Website:<NavLink href={details.url}>Website</NavLink>
                 </Card.Body>
             </Card>
             <Button onClick={()=>history.push(`/story/create/${attractionId}`)}>Create a story</Button>
