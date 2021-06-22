@@ -61,8 +61,8 @@ export const PostForm = () => {
         title: "",
         content: "",
         imageUrl: "",
-        socialStory: null,
-        visualSchedule: null,
+        socialStory: undefined,
+        visualSchedule: undefined,
         categoryId: 0,
         approved: false
     })

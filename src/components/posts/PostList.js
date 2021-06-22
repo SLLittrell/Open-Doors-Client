@@ -16,11 +16,11 @@ export const PostList = () => {
 
     useEffect(() => {
         // sort post by date newest to oldest
-        const sortedPosts = posts.sort((a, b) => new Date(b.publication_date) - new Date(a.publication_date))
-        const approvedPosts = sortedPosts.filter(post => post.approved === true)
+        const sortedPosts = posts?.sort((a, b) => new Date(b.publication_date) - new Date(a.publication_date))
+        const approvedPosts = sortedPosts?.filter(post => post.approved === true)
         // Filtering posts by current user and url path
         if(history.location.pathname.includes("/my")){
-            const currentUser = sortedPosts.filter(post => parseInt(post.user.id)=== userId)
+            const currentUser = sortedPosts?.filter(post => parseInt(post.user.id)=== userId)
             console.log(currentUser)
             setMyPosts(currentUser)
         } else {
