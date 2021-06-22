@@ -51,7 +51,7 @@ export const ScheduleProvider = props => {
     }
 
     const deleteSchedule = scheduleId => {
-        return fetch(`http://localhost:8000/posts/${scheduleId}`, {
+        return fetch(`http://localhost:8000/schedules/${scheduleId}`, {
             method: "DELETE",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("lu_token")}`

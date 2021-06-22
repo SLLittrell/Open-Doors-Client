@@ -29,21 +29,21 @@ export const Library = () => {
             setFilterSchedule(currentUser)
     },[schedules])
 
- 
 
     return (
         <>  
             <h2 className='header libraryStory'>My Social Stories</h2>
             <Row>
                 <Col>
-                {filterStory ? 
-                <Card key ={filterStory.id} style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={filterStory.title_image} />
+                {filterStory?.map((story) => 
+                <Card key ={story.id} style={{ width: '18rem' }}>
+                <Card.Img variant="top" src={story.title_image} />
                 <Card.Body>
-                  <Card.Title>{filterStory.titlepage}</Card.Title>
-                  <Button variant="primary" onClick={()=> history.push(`./story/${filterStory.id}`)}>View Story</Button>
+                  <Card.Title>{story.titlepage}</Card.Title>
+                  <Button variant="primary" onClick={()=> history.push(`./story/${story.id}`)}>View Story</Button>
+                  <Button variant="primary" onClick={()=> history.push(`./story/edit/${story.id}`)}>Edit</Button>
                 </Card.Body>        
-              </Card> : <></>}
+              </Card>)}
               </Col>
               <Col>
               <h2 className="header">My Visual Schedules</h2>

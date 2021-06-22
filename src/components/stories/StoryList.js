@@ -6,7 +6,7 @@ import {StoryContext } from './StoryProvider'
 import './StoryView.css'
 
 export const StoryView = () => {
-    const {getStoryById, story} =useContext(StoryContext)
+    const {getStoryById, oneStory} =useContext(StoryContext)
     const userId = parseInt(localStorage.getItem(`lu_token`))
     const {storyId} = useParams()
     const [filterStory, setFilterStory] =useState()
@@ -27,117 +27,117 @@ export const StoryView = () => {
 
     return (
         <>
-            <h1>{story.titlepage}</h1>
+            <h1>{oneStory.titlepage}</h1>
             <div>
             <Carousel ref={wrapper} activeIndex={index} onSelect={handleSelect}>
                 <Carousel.Item >
                     <img
                     className="d-block w-100"
-                    src={story.title_image}
+                    src={oneStory.title_image}
                     alt="First slide"
                     />
                     <Carousel.Caption>
-                    <h2 className="storyText">{story.titlepage}</h2>
+                    <h2 className="storyText">{oneStory.titlepage}</h2>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item >
                     <img
                     className="d-block w-100"
-                    src={story.page_1_image}
+                    src={oneStory.page_1_image}
                     alt="Second slide"
                     />
                     <Carousel.Caption>
-                    <h2 className="storyText">{story.page_1_text}</h2>
+                    <h2 className="storyText">{oneStory.page_1_text}</h2>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
-                    src={story.page_2_image}
+                    src={oneStory.page_2_image}
                     alt="Third slide"
                     />
                     <Carousel.Caption>
-                    <h2 className="storyText">{story.page_2_text}</h2>
+                    <h2 className="storyText">{oneStory.page_2_text}</h2>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
-                    src={story.page_3_image}
+                    src={oneStory.page_3_image}
                     alt="Fourth slide"
                     />
                     <Carousel.Caption>
-                    <h2 className="storyText">{story.page_3_text}</h2>
+                    <h2 className="storyText">{oneStory.page_3_text}</h2>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
-                    src={story.page_4_image}
+                    src={oneStory.page_4_image}
                     alt="Fifth slide"
                     />
                     <Carousel.Caption>
-                    <h2 className="storyText">{story.page_4_text}</h2>
+                    <h2 className="storyText">{oneStory.page_4_text}</h2>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
-                    src={story.page_5_image}
+                    src={oneStory.page_5_image}
                     alt="Sixth slide"
                     />
                     <Carousel.Caption>
-                    <h2 className="storyText">{story.page_5_text}</h2>
+                    <h2 className="storyText">{oneStory.page_5_text}</h2>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
-                    src={story.page_6_image}
+                    src={oneStory.page_6_image}
                     alt="Seventh slide"
                     />
                     <Carousel.Caption>
-                    <h2 className="storyText">{story.page_6_text}</h2>
+                    <h2 className="storyText">{oneStory.page_6_text}</h2>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
-                    src={story.page_7_image}
+                    src={oneStory.page_7_image}
                     alt="Eighth slide"
                     />
                     <Carousel.Caption>
-                    <h2 className="storyText">{story.page_7_text}</h2>
+                    <h2 className="storyText">{oneStory.page_7_text}</h2>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
-                    src={story.page_8_image}
+                    src={oneStory.page_8_image}
                     alt="Ninth slide"
                     />
                     <Carousel.Caption>
-                    <h2 className="storyText">{story.page_8_text}</h2>
+                    <h2 className="storyText">{oneStory.page_8_text}</h2>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
-                    src={story.page_9_image}
+                    src={oneStory.page_9_image}
                     alt="Tenth slide"
                     />
                     <Carousel.Caption>
-                    <h2 className="storyText">{story.page_9_text}</h2>
+                    <h2 className="storyText">{oneStory.page_9_text}</h2>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
-                    src={story.page_10_image}
+                    src={oneStory.page_10_image}
                     alt="Eleventh slide"
                     />
                     <Carousel.Caption>
-                    <h2 className="storyText">{story.page_10_text}</h2>
+                    <h2 className="storyText">{oneStory.page_10_text}</h2>
                     </Carousel.Caption>
                 </Carousel.Item>
                 </Carousel>
