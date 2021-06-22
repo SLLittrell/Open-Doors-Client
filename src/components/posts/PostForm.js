@@ -36,6 +36,7 @@ export const PostForm = () => {
     useEffect(() => {
         if (postId) {
             getPostById(postId)
+            // set returned object variables to the state
                 .then(post => {
                     setPost({
                     userId: post.user,
@@ -43,8 +44,8 @@ export const PostForm = () => {
                     content: post.content,
                     imageUrl: post.image_url,
                     publication_date: post.publication_date,
-                    socialStory:post.social_story,
-                    visualSchedule: post.visual_schedule,
+                    socialStory:post.social_story?.id,
+                    visualSchedule: post.visual_schedule?.id,
                     categoryId: post.category.id,
                     approved: post.approved
                     })
@@ -60,8 +61,8 @@ export const PostForm = () => {
         title: "",
         content: "",
         imageUrl: "",
-        socialStory: 0,
-        visualSchedule: 0,
+        socialStory: undefined,
+        visualSchedule: undefined,
         categoryId: 0,
         approved: false
     })
@@ -195,7 +196,7 @@ export const PostForm = () => {
                 className="form-control"
                 onChange={handleInputChange}>
                     {/* <option value={post.category?.id}>{post.category?.label}</option> */}
-                    <option value="0">Select a Category</option>
+                    <option value="">Select a Category</option>
                     {categories.map(type => (
                     <option key={type.id} value={type.id}>
                         {type.label}

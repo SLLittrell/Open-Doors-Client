@@ -12,7 +12,9 @@ export const StoryForm = () => {
     const userId = parseInt(localStorage.getItem(`open_user_id`))
 
     useEffect(()=>{
-        getStoryById(storyId)
+        if(storyId){
+         getStoryById(storyId)   
+        }    
     },[])
 
     useEffect(() =>{

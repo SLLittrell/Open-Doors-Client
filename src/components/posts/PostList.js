@@ -16,11 +16,11 @@ export const PostList = () => {
 
     useEffect(() => {
         // sort post by date newest to oldest
-        const sortedPosts = posts.sort((a, b) => new Date(b.publication_date) - new Date(a.publication_date))
-        const approvedPosts = sortedPosts.filter(post => post.approved === true)
+        const sortedPosts = posts?.sort((a, b) => new Date(b.publication_date) - new Date(a.publication_date))
+        const approvedPosts = sortedPosts?.filter(post => post.approved === true)
         // Filtering posts by current user and url path
         if(history.location.pathname.includes("/my")){
-            const currentUser = sortedPosts.filter(post => parseInt(post.user.id)=== userId)
+            const currentUser = sortedPosts?.filter(post => parseInt(post.user.id)=== userId)
             console.log(currentUser)
             setMyPosts(currentUser)
         } else {
@@ -28,7 +28,6 @@ export const PostList = () => {
         }
     },[posts])
 
-    console.log()
    const usersPost = history.location.pathname.includes("/my")
     return ( 
         <>
@@ -45,6 +44,7 @@ export const PostList = () => {
                             {title.social_story ? <Button onClick={()=>history.push(`/story/${title.social_story.id}`)}>View My Social Story</Button>: <></>}<br></br>
                             {title.visual_schedule ? <Button onClick={()=>history.push(`/schedule/${title.visual_schedule.id}`)}>View My Visual Schedule</Button>: <></>}
                         </Card.Body>
+                        <div className="notApproved">{title.approved === false ? "*This post has not been approved": <></>}</div>
                         <div>{usersPost ? <button onClick ={() => history.push(`/posts/edit/${title.id}`)}>Edit Post</button> : <></>}</div>
                     </Card>
                     

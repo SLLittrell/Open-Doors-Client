@@ -20,12 +20,12 @@ export const Library = () => {
     )},[])
 
     useEffect(()=>{
-        const currentUser = stories.filter(story => parseInt(story.user.id)=== userId)
+        const currentUser = stories?.filter(story => parseInt(story.user.id)=== userId)
             setFilterStory(currentUser)
     },[stories])
 
     useEffect(()=>{
-        const currentUser = schedules.filter(schedule => parseInt(schedule.user.id)=== userId)
+        const currentUser = schedules?.filter(schedule => parseInt(schedule.user.id)=== userId)
             setFilterSchedule(currentUser)
     },[schedules])
 
