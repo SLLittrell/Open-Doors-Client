@@ -86,7 +86,8 @@ export const PostForm = () => {
                 visual_schedule:post.visualSchedule,
                 publication_date: post.publication_date,
                 image_url: post.imageUrl,
-                category_id: post.categoryId
+                category_id: post.categoryId,
+                approved: post.approved
             })
             .then(() => history.push(`/myposts`))
             }else {

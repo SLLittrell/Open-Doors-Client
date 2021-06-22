@@ -29,6 +29,8 @@ export const Library = () => {
             setFilterSchedule(currentUser)
     },[schedules])
 
+ 
+
     return (
         <>  
             <h2 className='header libraryStory'>My Social Stories</h2>
@@ -51,6 +53,7 @@ export const Library = () => {
               <Card.Body>
                 <Card.Title>{sched.title}</Card.Title>
                 <Button variant="primary" onClick={()=> history.push(`./schedule/${sched.id}`)}>View Schedule</Button>
+                <Button variant="primary" onClick={()=> history.push(`./schedule/edit/${sched.id}`)}>Edit</Button>
               </Card.Body>        
             </Card>
               )}</Col>

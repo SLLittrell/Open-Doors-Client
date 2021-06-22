@@ -38,9 +38,33 @@ export const ScheduleProvider = props => {
         .then(()=>getSchedules)
     }
 
+    const updateSchedule = schedule => {
+        return fetch(`http://localhost:8000/schedules/${schedule.id}`, {
+            method: "PUT",
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("lu_token")}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(schedule)
+        })
+            .then(getSchedules)
+    }
+
+    const deleteSchedule = scheduleId => {
+        return fetch(`http://localhost:8000/posts/${scheduleId}`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("lu_token")}`
+            }
+        })
+            .then(getSchedules)
+            .then(setSchedules)
+    }
+
     return (
         <ScheduleContext.Provider value={{
-            addSchedule, getSchedules, schedules, getScheduleById, singleSched
+            addSchedule, getSchedules, schedules, getScheduleById, singleSched, 
+            deleteSchedule, updateSchedule
 
         }}>
             {props.children}

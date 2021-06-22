@@ -102,6 +102,9 @@ export const ApplicationViews = () => {
                                     <Route exact path="/schedule/:scheduleId(\d+)">
                                         <ScheduleView />
                                     </Route>
+                                    <Route exact path="/schedule/edit/:scheduleId(\d+)">
+                                        <ScheduleForm />
+                                    </Route>
                                     {/* _________________Admin_____________________ */}
                                     <Route exact path="/admin/:staffId(\d+)">
                                         <AdminPortal/>
