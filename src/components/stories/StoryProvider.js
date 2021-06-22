@@ -4,7 +4,7 @@ export const StoryContext = createContext()
 
 export const StoryProvider = props => {
     const [stories, setStories] = useState([])
-    const [story, setStory] = useState({})
+    const [oneStory, setOneStory] = useState({})
 
     const getStories = () => {
         return fetch(`http://localhost:8000/stories`,{
@@ -23,7 +23,7 @@ export const StoryProvider = props => {
             }
         })
             .then(res => res.json())
-            .then(setStory)
+            .then(setOneStory)
     }
 
     const addStory = storyObj => {
@@ -38,9 +38,32 @@ export const StoryProvider = props => {
         .then(()=>getStories)
     }
 
+    const updateStory = story => {
+        return fetch(`http://localhost:8000/stories/${story.id}`, {
+            method: "PUT",
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("lu_token")}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(story)
+        })
+            .then(getStories)
+    }
+
+    const deleteStory = storyId => {
+        return fetch(`http://localhost:8000/stories/${storyId}`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("lu_token")}`
+            }
+        })
+            .then(getStories)
+            .then(setStories)
+    }
+
     return (
         <StoryContext.Provider value={{
-            addStory, getStories, stories, getStoryById, story
+            addStory, getStories, stories, getStoryById, oneStory, deleteStory, updateStory
 
         }}>
             {props.children}

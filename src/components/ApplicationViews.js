@@ -87,6 +87,9 @@ export const ApplicationViews = () => {
                                     <Route exact path="/story/:storyId(\d+)">
                                         <StoryView />
                                     </Route>
+                                    <Route exact path="/story/edit/:storyId(\d+)">
+                                        <StoryForm />
+                                    </Route>
                                     <Route exact path="/story/create/:attractionId">
                                         <StoryForm />
                                     </Route>
@@ -101,6 +104,9 @@ export const ApplicationViews = () => {
                                     </Route>
                                     <Route exact path="/schedule/:scheduleId(\d+)">
                                         <ScheduleView />
+                                    </Route>
+                                    <Route exact path="/schedule/edit/:scheduleId(\d+)">
+                                        <ScheduleForm />
                                     </Route>
                                     {/* _________________Admin_____________________ */}
                                     <Route exact path="/admin/:staffId(\d+)">
