@@ -27,29 +27,24 @@ export const NavBar = (props) => {
         <nav className="menu" tabIndex="0">
         <ul className="navbar">
             <li tabIndex="1" className="icon-users">
-                <Nav.Link className="nav-link" href="/profile">Home</Nav.Link>
+                <Nav.Link className="nav-link" href="/">Home</Nav.Link>
             </li>
             <li tabIndex="2" className="icon-attractions">
                 <Nav.Link className="nav-link" href="/attractions">Search Attractions</Nav.Link>
             </li>
             <li tabIndex="3" className="icon-story">
                 <Nav.Link className="nav-link" href="/stories">Social Stories</Nav.Link>
-            </li>
-                
-            <li tabIndex="4" className="icon-story">
-                <Nav.Link className="nav-link" href="/stories/create">Create Social Stories</Nav.Link>
             </li> 
                 
             <li tabIndex="4" className="icon-schedule">
                 <Nav.Link className="nav-link" href="/schedules">Visual Schedules</Nav.Link>
             </li> 
 
-            <li tabIndex="4" className="icon-schedule">
-                <Nav.Link className="nav-link" href="/schedules/create">Create Schedules</Nav.Link>
-            </li>
-                
             <li tabIndex="5" className="icon-library">
                 <Nav.Link className="nav-link" href="/library">My Library</Nav.Link>
+            </li>
+            <li tabIndex="6" className="icon-dashboard">
+                <Nav.Link className="nav-link" href="/profile">Community Board</Nav.Link>
             </li>
             <li tabIndex="6" className="icon-dashboard">
                 <Nav.Link className="nav-link" href="/myposts">My Posts</Nav.Link>
