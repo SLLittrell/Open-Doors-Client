@@ -1,9 +1,8 @@
 import React, { useContext, useEffect, useState } from "react"
 import { AttractionContext } from "./AttractionProvider"
 import { AttractionList } from "./AttractionList"
-import { Button } from "react-bootstrap"
-
-
+import { Button, Form, InputGroup } from "react-bootstrap"
+import "./Attraction.css"
 
 export const SearchAttractionLocations = () => {
     const {setSearchTerms}=useContext(AttractionContext)
@@ -16,10 +15,15 @@ export const SearchAttractionLocations = () => {
 
     return (
         <>
-            <fieldset>
-               <label forhtml="search">Search for Attractions: <input type="text" id="search" placeholder ="City" onChange={(event) =>setSearch(event.target.value)}/></label> 
+            <Form>
+            <Form.Group controlId="exampleForm.ControlInput1" className="search">
+                <Form.Label>Search for Attractions</Form.Label>
+                <InputGroup.Prepend>
+                <Form.Control type="text" id="search" placeholder="City" onChange={(event) =>setSearch(event.target.value)} />
                 <Button onClick={handleSearch}>Search</Button>
-            </fieldset>
+                </InputGroup.Prepend>
+            </Form.Group>
+            </Form>
         </>
     )
 }

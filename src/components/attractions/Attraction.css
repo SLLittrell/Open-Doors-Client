@@ -1,0 +1,18 @@
+.search {
+    width: 17rem;
+    margin:auto;
+    position: relative;
+    text-align: center;
+    font-size: 20px;
+}
+
+.Attraction {
+    margin:auto;
+    position: relative;
+    text-align: center;
+}
+.attractionCards {
+    margin:auto;
+    position: relative;
+    text-align: center;  
+}

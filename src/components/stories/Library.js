@@ -32,9 +32,9 @@ export const Library = () => {
 
     return (
         <>  
-            <h2 className='header libraryStory'>My Social Stories</h2>
+            
             <Row>
-                <Col>
+                <Col><h2 className='libraryStory'>My Social Stories</h2>
                 {filterStory?.map((story) => 
                 <Card key ={story.id} style={{ width: '18rem' }}>
                 <Card.Img variant="top" src={story.title_image} />
