@@ -8,7 +8,7 @@ export const CategoryProvider = props => {
     const getCategories = () => {
         return fetch(`http://localhost:8000/categories`, {
             headers: {
-                "Authorization": `Token ${localStorage.getItem("lu_token")}`
+                "Authorization": `Token ${localStorage.getItem("open_token")}`
             }
         })
             .then(res => res.json())

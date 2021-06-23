@@ -10,7 +10,7 @@ import { ProfileProvider } from "./auth/ProfileProvider";
 export const OpenDoors = () => (
   <>
         <Route render={() => {
-          if (localStorage.getItem("lu_token")) {
+          if (localStorage.getItem("open_token")) {
             return (
               <>
               <ProfileProvider>

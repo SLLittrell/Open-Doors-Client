@@ -8,7 +8,7 @@ export const UserProvider = props => {
     const getAllUsers = () => {
         return fetch(`http://localhost:8000/users`, {
             headers: {
-                "Authorization": `Token ${localStorage.getItem("lu_token")}`
+                "Authorization": `Token ${localStorage.getItem("open_token")}`
             }
         })
             .then(res => res.json())
@@ -18,7 +18,7 @@ export const UserProvider = props => {
     const getUserById = (id) => {
         return fetch(`http://localhost:8000/users/${id}`, {
             headers: {
-                "Authorization": `Token ${localStorage.getItem("lu_token")}`
+                "Authorization": `Token ${localStorage.getItem("open_token")}`
             }
         })
             .then(res => res.json())
@@ -29,7 +29,7 @@ export const UserProvider = props => {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Token ${localStorage.getItem("lu_token")}`
+            "Authorization": `Token ${localStorage.getItem("open_token")}`
           },
           body: JSON.stringify(user)
         })

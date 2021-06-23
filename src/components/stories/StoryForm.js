@@ -20,6 +20,8 @@ export const StoryForm = () => {
     useEffect(() =>{
         setStory(oneStory)
     },[oneStory])
+    // console.log("story",storyId)
+    console.log("attraction",attractionId)
     
     const [story, setStory] =useState({
         user: userId,
@@ -54,11 +56,14 @@ export const StoryForm = () => {
         setStory(newStory)
     }
 
+    console.log("story", story)
+
     const createStory = () => {
         if(storyId){
             updateStory(story)
             .then(() => history.push('/library')) 
         }else{
+        story.attraction = attractionId
           addStory(story)
           .then(() => history.push('/library'))   
         }       

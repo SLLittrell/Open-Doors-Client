@@ -9,7 +9,7 @@ export const PostProvider = props => {
     const getPosts = () => {
         return fetch(`http://localhost:8000/posts`,{
             headers: {
-                "Authorization": `Token ${localStorage.getItem("lu_token")}`
+                "Authorization": `Token ${localStorage.getItem("open_token")}`
             }
         })
             .then(res => res.json())
@@ -18,7 +18,7 @@ export const PostProvider = props => {
     const getPostById = (id) => {
         return fetch(`http://localhost:8000/posts/${id}`, {
             headers: {
-                "Authorization": `Token ${localStorage.getItem("lu_token")}`
+                "Authorization": `Token ${localStorage.getItem("open_token")}`
             }
         })
             .then(res => res.json())
@@ -31,7 +31,7 @@ export const PostProvider = props => {
         return fetch("http://localhost:8000/posts", {
             method: "POST",
             headers: {
-                "Authorization": `Token ${localStorage.getItem("lu_token")}`,
+                "Authorization": `Token ${localStorage.getItem("open_token")}`,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(postObj)
@@ -43,7 +43,7 @@ export const PostProvider = props => {
         return fetch(`http://localhost:8000/posts/${post.id}`, {
             method: "PUT",
             headers: {
-                "Authorization": `Token ${localStorage.getItem("lu_token")}`,
+                "Authorization": `Token ${localStorage.getItem("open_token")}`,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(post)
@@ -55,7 +55,7 @@ export const PostProvider = props => {
         return fetch(`http://localhost:8000/posts/${postId}`, {
             method: "DELETE",
             headers: {
-                "Authorization": `Token ${localStorage.getItem("lu_token")}`
+                "Authorization": `Token ${localStorage.getItem("open_token")}`
             }
         })
             .then(getPosts)

@@ -19,7 +19,7 @@ export const AttractionList = () => {
             {searchTerms ? <section className="Attraction" >
                 <h2>{local.name} {local.country}</h2>
                 { Array.isArray(attraction) ? attraction.map(place =>
-                <Card style={{ width: '18rem' }} key ={place.xid}>
+                <Card style={{ width: '20rem' }} key ={place.xid} className="attractionCards">
                 <ListGroup variant="flush" >
                     <ListGroup.Item action href={`/attractions/details/${place.xid}`}>{place.name}</ListGroup.Item>
                 </ListGroup>

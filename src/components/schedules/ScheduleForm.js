@@ -11,7 +11,10 @@ export const ScheduleForm = () => {
     const history = useHistory()
 
     useEffect(()=>{
+        if(scheduleId){
         getScheduleById(scheduleId)
+        }
+        
     },[])
 
     useEffect(() =>{

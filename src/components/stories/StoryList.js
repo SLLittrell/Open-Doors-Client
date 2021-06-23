@@ -7,7 +7,7 @@ import './StoryView.css'
 
 export const StoryView = () => {
     const {getStoryById, oneStory} =useContext(StoryContext)
-    const userId = parseInt(localStorage.getItem(`lu_token`))
+    const userId = parseInt(localStorage.getItem(`open_token`))
     const {storyId} = useParams()
     const [filterStory, setFilterStory] =useState()
 

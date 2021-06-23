@@ -9,7 +9,7 @@ export const StoryProvider = props => {
     const getStories = () => {
         return fetch(`http://localhost:8000/stories`,{
             headers: {
-                "Authorization": `Token ${localStorage.getItem("lu_token")}`
+                "Authorization": `Token ${localStorage.getItem("open_token")}`
             }
         })
             .then(res => res.json())
@@ -19,7 +19,7 @@ export const StoryProvider = props => {
     const getStoryById = (storyId) => {
         return fetch(`http://localhost:8000/stories/${storyId}`,{
             headers: {
-                "Authorization": `Token ${localStorage.getItem("lu_token")}`
+                "Authorization": `Token ${localStorage.getItem("open_token")}`
             }
         })
             .then(res => res.json())
@@ -30,7 +30,7 @@ export const StoryProvider = props => {
         return fetch("http://localhost:8000/stories", {
             method: "POST",
             headers: {
-                "Authorization": `Token ${localStorage.getItem("lu_token")}`,
+                "Authorization": `Token ${localStorage.getItem("open_token")}`,
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(storyObj),
@@ -42,7 +42,7 @@ export const StoryProvider = props => {
         return fetch(`http://localhost:8000/stories/${story.id}`, {
             method: "PUT",
             headers: {
-                "Authorization": `Token ${localStorage.getItem("lu_token")}`,
+                "Authorization": `Token ${localStorage.getItem("open_token")}`,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(story)
@@ -54,7 +54,7 @@ export const StoryProvider = props => {
         return fetch(`http://localhost:8000/stories/${storyId}`, {
             method: "DELETE",
             headers: {
-                "Authorization": `Token ${localStorage.getItem("lu_token")}`
+                "Authorization": `Token ${localStorage.getItem("open_token")}`
             }
         })
             .then(getStories)
