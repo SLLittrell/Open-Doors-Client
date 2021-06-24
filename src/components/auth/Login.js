@@ -1,6 +1,8 @@
 import React from "react"
 import { Link, useHistory } from "react-router-dom"
 import "./Auth.css"
+import { baseApi } from '../APISettings'
+
 
 
 export const Login = props => {
@@ -12,7 +14,7 @@ export const Login = props => {
     const handleLogin = (e) => {
         e.preventDefault()
 
-        return fetch("http://127.0.0.1:8000/login", {
+        return fetch(`${baseApi.apiBaseUrl}/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

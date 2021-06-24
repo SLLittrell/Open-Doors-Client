@@ -13,19 +13,17 @@ export const StoryForm = () => {
 
     useEffect(()=>{
         if(storyId){
-         getStoryById(storyId)   
+         getStoryById(storyId)
+         .then(()=> setStory)   
         }    
     },[])
-
-    useEffect(() =>{
-        setStory(oneStory)
-    },[oneStory])
+   
     // console.log("story",storyId)
     console.log("attraction",attractionId)
-    
+    console.log(userId)
     const [story, setStory] =useState({
         user: userId,
-        attraction: attractionId,
+        attraction: null,
         titlepage: "",
         title_image:"",
         page_1_text: "",
@@ -56,14 +54,15 @@ export const StoryForm = () => {
         setStory(newStory)
     }
 
-    console.log("story", story)
 
     const createStory = () => {
         if(storyId){
             updateStory(story)
             .then(() => history.push('/library')) 
         }else{
-        story.attraction = attractionId
+        if(attractionId){
+          story.attraction = attractionId  
+        }
           addStory(story)
           .then(() => history.push('/library'))   
         }       
@@ -78,74 +77,91 @@ export const StoryForm = () => {
         }
     }
 
+    const [validated, setValidated] = useState(false);
+
+    const handleSubmit = (event) => {
+      const form = event.currentTarget;
+      if (form.checkValidity() === false) {
+        event.preventDefault();
+        event.stopPropagation();
+        setValidated(true)
+      }
+      
+      else{
+          event.preventDefault()
+          createStory()
+      }
+    };
+
     return (
         <>
             <header><h2 className="header">{storyId ? "Edit Social Story" : "Create a Social Story"}</h2></header>
+            <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Form.Group className="storyForm">
-                <Form.Row className = "page">
+                <Form.Row className = "page" >
                     <Form.Label column="lg" lg={2}>
-                    Title Page:
+                    *Title Page:
                     </Form.Label>
                     <Col>
-                    <Form.Control value={story.titlepage} onChange={handleInputChange} id="titlepage" size="lg" type="text" placeholder="Title" />
+                    <Form.Control required value={story.titlepage} onChange={handleInputChange} id="titlepage" size="lg" type="text" placeholder="Title" />
                     </Col>
                     <Col>
-                    <Form.Control value={story.title_image} onChange={handleInputChange} id="title_image" size="lg" type="text" placeholder="Image URL" />
+                    <Form.Control required value={story.title_image} onChange={handleInputChange} id="title_image" size="lg" type="text" placeholder="Image URL" />
                     </Col>
                 </Form.Row>
                 <Form.Row className = "page">
                     <Form.Label column="lg" lg={2}>
-                        Page One:
+                        *Page One:
                     </Form.Label>
                     <Col>
-                    <Form.Control value={story.page_1_text} onChange={handleInputChange} id="page_1_text" size="lg" type="text" placeholder="Text" />
+                    <Form.Control required value={story.page_1_text} onChange={handleInputChange} id="page_1_text" size="lg" type="text" placeholder="Text" />
                     </Col>
                     <Col>
-                    <Form.Control value={story.page_1_image} onChange={handleInputChange} id="page_1_image" size="lg" type="text" placeholder="Image URL" />
+                    <Form.Control required value={story.page_1_image} onChange={handleInputChange} id="page_1_image" size="lg" type="text" placeholder="Image URL" />
                     </Col>
                 </Form.Row>
                 <Form.Row className = "page">
                     <Form.Label column="lg" lg={2}>
-                        Page Two:
+                        *Page Two:
                     </Form.Label>
                     <Col>
-                    <Form.Control value={story.page_2_text} onChange={handleInputChange} id="page_2_text" size="lg" type="text" placeholder="Text" />
+                    <Form.Control required value={story.page_2_text} onChange={handleInputChange} id="page_2_text" size="lg" type="text" placeholder="Text" />
                     </Col>
                     <Col>
-                    <Form.Control value={story.page_2_image} onChange={handleInputChange} id="page_2_image" size="lg" type="text" placeholder="Image URL" />
+                    <Form.Control required value={story.page_2_image} onChange={handleInputChange} id="page_2_image" size="lg" type="text" placeholder="Image URL" />
                     </Col>
                 </Form.Row>
                 <Form.Row className = "page">
                     <Form.Label column="lg" lg={2}>
-                        Page Three:
+                        *Page Three:
                     </Form.Label>
                     <Col>
-                    <Form.Control value={story.page_3_text} onChange={handleInputChange} id="page_3_text" size="lg" type="text" placeholder="Text" />
+                    <Form.Control required value={story.page_3_text} onChange={handleInputChange} id="page_3_text" size="lg" type="text" placeholder="Text" />
                     </Col>
                     <Col>
-                    <Form.Control value={story.page_3_image} onChange={handleInputChange} id="page_3_image" size="lg" type="text" placeholder="Image URL" />
+                    <Form.Control required value={story.page_3_image} onChange={handleInputChange} id="page_3_image" size="lg" type="text" placeholder="Image URL" />
                     </Col>
                 </Form.Row>
                 <Form.Row className = "page">
                     <Form.Label column="lg" lg={2}>
-                        Page Four:
+                        *Page Four:
                     </Form.Label>
                     <Col>
-                    <Form.Control value={story.page_4_text} onChange={handleInputChange} id="page_4_text" size="lg" type="text" placeholder="Text" />
+                    <Form.Control required value={story.page_4_text} onChange={handleInputChange} id="page_4_text" size="lg" type="text" placeholder="Text" />
                     </Col>
                     <Col>
-                    <Form.Control value={story.page_4_image} onChange={handleInputChange} id="page_4_image" size="lg" type="text" placeholder="Image URL" />
+                    <Form.Control required value={story.page_4_image} onChange={handleInputChange} id="page_4_image" size="lg" type="text" placeholder="Image URL" />
                     </Col>
                 </Form.Row>
                 <Form.Row className = "page">
                     <Form.Label column="lg" lg={2}>
-                        Page Five:
+                        *Page Five:
                     </Form.Label>
                     <Col>
-                    <Form.Control value={story.page_5_text} onChange={handleInputChange} id="page_5_text" size="lg" type="text" placeholder="Text" />
+                    <Form.Control required value={story.page_5_text} onChange={handleInputChange} id="page_5_text" size="lg" type="text" placeholder="Text" />
                     </Col>
                     <Col>
-                    <Form.Control value={story.page_5_image} onChange={handleInputChange} id="page_5_image" size="lg" type="text" placeholder="Image URL" />
+                    <Form.Control required value={story.page_5_image} onChange={handleInputChange} id="page_5_image" size="lg" type="text" placeholder="Image URL" />
                     </Col>
                 </Form.Row>
                 <Form.Row className = "page">
@@ -203,11 +219,16 @@ export const StoryForm = () => {
                     <Form.Control value={story.page_10_image} onChange={handleInputChange} id="page_10_image" size="lg" type="text" placeholder="Image URL" />
                     </Col>
                 </Form.Row>
-                <Button variant="primary" type="submit" onClick ={createStory}>
+                <div>* Indicates Required Fields</div>
+                <Button variant="primary" type="submit">
                     {storyId ?"Save":"Submit"}
                 </Button>
                 { storyId ? <Button variant="primary" id={storyId} onClick={handleDelete}>Delete</Button> : <></>}
+                <Form.Control.Feedback type="invalid">
+                    Please provide a entries for at least 5 pages.
+                </Form.Control.Feedback>
             </Form.Group>
+            </Form>
         </>
     )
 }

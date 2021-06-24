@@ -47,7 +47,6 @@ export const AttractionDetails = () => {
                 <Card.Text>
                     Address: {details.address?.house_number}{details.address?.road} {details.address?.city} {details.address?.state}
                 </Card.Text>
-                Visit Website:<NavLink href={details.url}>Website</NavLink>
                 </Card.Body>
             </Card>
             <Button onClick={()=>history.push(`/story/create/${attractionId}`)}>Create a story</Button>

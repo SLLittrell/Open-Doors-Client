@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react'
+import { baseApi } from '../APISettings'
 
 export const CategoryContext = createContext()
 
@@ -6,7 +7,7 @@ export const CategoryProvider = props => {
     const [categories, setCategories] = useState([])
 
     const getCategories = () => {
-        return fetch(`http://localhost:8000/categories`, {
+        return fetch(`${baseApi.apiBaseUrl}/categories`, {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("open_token")}`
             }

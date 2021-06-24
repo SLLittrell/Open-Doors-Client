@@ -16,7 +16,7 @@ export const SearchAttractionLocations = () => {
     return (
         <>
             <Form>
-            <Form.Group controlId="exampleForm.ControlInput1" className="search">
+            <Form.Group className="search">
                 <Form.Label>Search for Attractions</Form.Label>
                 <InputGroup.Prepend>
                 <Form.Control type="text" id="search" placeholder="City" onChange={(event) =>setSearch(event.target.value)} />

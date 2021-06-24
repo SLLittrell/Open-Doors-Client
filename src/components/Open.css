@@ -1,0 +1,9 @@
+html{
+    background-image: url("../images/BackgroundImage.JPG");
+    background-size: 73.5%;
+  
+  }
+  main, .root{
+    background-image: url("../images/BackgroundImage.JPG");
+    background-size: 79%;
+  }

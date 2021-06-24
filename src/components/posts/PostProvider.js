@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react'
-
+import { baseApi } from '../APISettings'
 export const PostContext = createContext()
 
 export const PostProvider = props => {
@@ -7,7 +7,7 @@ export const PostProvider = props => {
     const [ searchTerms, setSearchTerms ] = useState("")
 
     const getPosts = () => {
-        return fetch(`http://localhost:8000/posts`,{
+        return fetch(`${baseApi.apiBaseUrl}/posts`,{
             headers: {
                 "Authorization": `Token ${localStorage.getItem("open_token")}`
             }
@@ -16,7 +16,7 @@ export const PostProvider = props => {
             .then(setPosts)
     }
     const getPostById = (id) => {
-        return fetch(`http://localhost:8000/posts/${id}`, {
+        return fetch(`${baseApi.apiBaseUrl}/posts/${id}`, {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("open_token")}`
             }
@@ -28,7 +28,7 @@ export const PostProvider = props => {
             
 
     const addPost = postObj => {
-        return fetch("http://localhost:8000/posts", {
+        return fetch(`${baseApi.apiBaseUrl}/posts`, {
             method: "POST",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("open_token")}`,
@@ -40,7 +40,7 @@ export const PostProvider = props => {
     }
 
     const updatePost = post => {
-        return fetch(`http://localhost:8000/posts/${post.id}`, {
+        return fetch(`${baseApi.apiBaseUrl}/localhost:8000/posts/${post.id}`, {
             method: "PUT",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("open_token")}`,
@@ -52,7 +52,7 @@ export const PostProvider = props => {
     }
 
     const deletePost = postId => {
-        return fetch(`http://localhost:8000/posts/${postId}`, {
+        return fetch(`${baseApi.apiBaseUrl}/posts/${postId}`, {
             method: "DELETE",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("open_token")}`

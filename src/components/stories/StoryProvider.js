@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react'
+import { baseApi } from '../APISettings'
 
 export const StoryContext = createContext()
 
@@ -7,7 +8,7 @@ export const StoryProvider = props => {
     const [oneStory, setOneStory] = useState({})
 
     const getStories = () => {
-        return fetch(`http://localhost:8000/stories`,{
+        return fetch(`${baseApi.apiBaseUrl}/stories`,{
             headers: {
                 "Authorization": `Token ${localStorage.getItem("open_token")}`
             }
@@ -17,7 +18,7 @@ export const StoryProvider = props => {
     }
     
     const getStoryById = (storyId) => {
-        return fetch(`http://localhost:8000/stories/${storyId}`,{
+        return fetch(`${baseApi.apiBaseUrl}/stories/${storyId}`,{
             headers: {
                 "Authorization": `Token ${localStorage.getItem("open_token")}`
             }
@@ -27,7 +28,7 @@ export const StoryProvider = props => {
     }
 
     const addStory = storyObj => {
-        return fetch("http://localhost:8000/stories", {
+        return fetch(`${baseApi.apiBaseUrl}/stories`, {
             method: "POST",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("open_token")}`,
@@ -39,7 +40,7 @@ export const StoryProvider = props => {
     }
 
     const updateStory = story => {
-        return fetch(`http://localhost:8000/stories/${story.id}`, {
+        return fetch(`${baseApi.apiBaseUrl}/stories/${story.id}`, {
             method: "PUT",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("open_token")}`,
@@ -51,7 +52,7 @@ export const StoryProvider = props => {
     }
 
     const deleteStory = storyId => {
-        return fetch(`http://localhost:8000/stories/${storyId}`, {
+        return fetch(`${baseApi.apiBaseUrl}/stories/${storyId}`, {
             method: "DELETE",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("open_token")}`
