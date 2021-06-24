@@ -14,7 +14,7 @@ export const StoryForm = () => {
     useEffect(()=>{
         if(storyId){
          getStoryById(storyId)
-         .then(()=> setStory)   
+         .then((res)=> setStory(res))   
         }    
     },[])
    

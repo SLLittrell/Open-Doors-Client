@@ -24,7 +24,8 @@ export const StoryProvider = props => {
             }
         })
             .then(res => res.json())
-            .then(setOneStory)
+            .then((res)=>{setOneStory(res)
+            return res})
     }
 
     const addStory = storyObj => {

@@ -13,7 +13,7 @@ export const Home = () => {
                 <h1 className="header">Welcome to Open Doors</h1>
             </section>
             <Container>
-                <h3 className="header">An application to help families, educators, or caregivers explore local events and attractions with confidence. </h3>
+                <h3 className="header">An application to help families, educators, and caregivers explore local attractions with confidence. </h3>
             </Container>
         </>
     )

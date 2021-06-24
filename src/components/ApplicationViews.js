@@ -38,7 +38,6 @@ export const ApplicationViews = () => {
                                 <ScheduleProvider>
 
                                     <Route exact path="/">
-                                        <Profile />
                                         <Home/>
                                     </Route>
                                     {/* _________________Attractions________________ */}
@@ -68,8 +67,7 @@ export const ApplicationViews = () => {
                                         <UnapprovedPostDetails />
                                     </Route>
                                     {/* _________________Profile______________________________ */}
-                                    <Route exact path="/profile">
-                                        <Profile />
+                                    <Route exact path="/profile">                              
                                         <PostList />
                                     </Route>
 
@@ -81,7 +79,6 @@ export const ApplicationViews = () => {
                                         <StoryForm />
                                     </Route>
                                     <Route exact path="/library">
-                                        <Profile />
                                         <Library />
                                     </Route>
                                     <Route exact path="/story/:storyId(\d+)">

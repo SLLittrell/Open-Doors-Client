@@ -40,7 +40,7 @@ export const PostProvider = props => {
     }
 
     const updatePost = post => {
-        return fetch(`${baseApi.apiBaseUrl}/localhost:8000/posts/${post.id}`, {
+        return fetch(`${baseApi.apiBaseUrl}/posts/${post.id}`, {
             method: "PUT",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("open_token")}`,
