@@ -1,5 +1,4 @@
 import React, { createContext, useEffect, useState } from "react"
-import { settings } from "../auth/Settings"
 
 
 export const AttractionContext = createContext()
