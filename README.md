@@ -49,13 +49,6 @@ login using fixture data
 - Admin users have access to approve posts before all users can view it. 
 
 
-### ERD
-![OpenDorrs ERD](https://user-images.githubusercontent.com/76744351/123309410-7d075380-d4ea-11eb-8308-4d23eced0b6c.JPG)
-
-
-### Wireframe
-https://www.figma.com/file/7hGVLLMWDUKwg6nq5i4sOl/Open-Doors?node-id=0%3A1
-
 ### Support
 Fill out a support ticket if you discover any major bugs to address. 
 
