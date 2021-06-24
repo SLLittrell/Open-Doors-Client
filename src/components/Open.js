@@ -5,6 +5,7 @@ import { Register } from "./auth/Register"
 import { ApplicationViews } from "./ApplicationViews";
 import { NavBar } from "./nav/NavBar";
 import { ProfileProvider } from "./auth/ProfileProvider";
+import './Open.css'
 
 
 export const OpenDoors = () => (

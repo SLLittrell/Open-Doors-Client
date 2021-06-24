@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Card, Carousel } from 'react-bootstrap'
+import { Button, Card, Carousel, } from 'react-bootstrap'
 import { useHistory } from 'react-router'
 import { useParams } from 'react-router-dom'
 import {StoryContext } from './StoryProvider'
@@ -9,6 +9,7 @@ export const StoryView = () => {
     const {getStoryById, oneStory} =useContext(StoryContext)
     const userId = parseInt(localStorage.getItem(`open_token`))
     const {storyId} = useParams()
+    const history = useHistory()
     const [filterStory, setFilterStory] =useState()
 
     
@@ -29,7 +30,7 @@ export const StoryView = () => {
         <>
             <h1>{oneStory.titlepage}</h1>
             <div>
-            <Carousel ref={wrapper} activeIndex={index} onSelect={handleSelect}>
+            <Carousel ref={wrapper} activeIndex={index} onSelect={handleSelect} interval={null}>
                 <Carousel.Item >
                     <img
                     className="d-block w-100"
@@ -91,54 +92,54 @@ export const StoryView = () => {
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
-                    <img
+                    {oneStory.page_6_image ?<><img
                     className="d-block w-100"
                     src={oneStory.page_6_image}
                     alt="Seventh slide"
                     />
                     <Carousel.Caption>
                     <h2 className="storyText">{oneStory.page_6_text}</h2>
-                    </Carousel.Caption>
+                    </Carousel.Caption></>:<Button className="btn backArrow"></Button>}
                 </Carousel.Item>
                 <Carousel.Item>
-                    <img
+                    {oneStory.page_7_image ? <><img
                     className="d-block w-100"
                     src={oneStory.page_7_image}
                     alt="Eighth slide"
                     />
                     <Carousel.Caption>
                     <h2 className="storyText">{oneStory.page_7_text}</h2>
-                    </Carousel.Caption>
+                    </Carousel.Caption></>:<></>}
                 </Carousel.Item>
                 <Carousel.Item>
-                    <img
+                    {oneStory.page_8_image ? <><img
                     className="d-block w-100"
                     src={oneStory.page_8_image}
                     alt="Ninth slide"
                     />
                     <Carousel.Caption>
                     <h2 className="storyText">{oneStory.page_8_text}</h2>
-                    </Carousel.Caption>
+                    </Carousel.Caption></>:<></>}
                 </Carousel.Item>
                 <Carousel.Item>
-                    <img
+                    {oneStory.page_9_image ? <><img
                     className="d-block w-100"
                     src={oneStory.page_9_image}
                     alt="Tenth slide"
                     />
                     <Carousel.Caption>
                     <h2 className="storyText">{oneStory.page_9_text}</h2>
-                    </Carousel.Caption>
+                    </Carousel.Caption></>:<></>}
                 </Carousel.Item>
                 <Carousel.Item>
-                    <img
+                    {oneStory.page_10_image ? <><img
                     className="d-block w-100"
                     src={oneStory.page_10_image}
                     alt="Eleventh slide"
                     />
                     <Carousel.Caption>
                     <h2 className="storyText">{oneStory.page_10_text}</h2>
-                    </Carousel.Caption>
+                    </Carousel.Caption></>:<></>}
                 </Carousel.Item>
                 </Carousel>
             </div>

@@ -2,3 +2,8 @@
     background-color: white;
     color: black;
 }
+.backArrow {
+    color: rgb(206, 206, 206);
+    width: 120px;
+    height: 50px;
+}

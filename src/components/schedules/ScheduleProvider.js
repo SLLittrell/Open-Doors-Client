@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react'
+import { baseApi } from '../APISettings'
 
 export const ScheduleContext = createContext()
 
@@ -7,7 +8,7 @@ export const ScheduleProvider = props => {
     const [singleSched, setSingleSched] = useState({})
 
     const getSchedules = () => {
-        return fetch(`http://localhost:8000/schedules`,{
+        return fetch(`${baseApi.apiBaseUrl}/schedules`,{
             headers: {
                 "Authorization": `Token ${localStorage.getItem("open_token")}`
             }
@@ -17,7 +18,7 @@ export const ScheduleProvider = props => {
     }
     
     const getScheduleById = (scheduleId) => {
-        return fetch(`http://localhost:8000/schedules/${scheduleId}`,{
+        return fetch(`${baseApi.apiBaseUrl}/schedules/${scheduleId}`,{
             headers: {
                 "Authorization": `Token ${localStorage.getItem("open_token")}`
             }
@@ -27,7 +28,7 @@ export const ScheduleProvider = props => {
     }
 
     const addSchedule = scheduleObj => {
-        return fetch("http://localhost:8000/schedules", {
+        return fetch(`${baseApi.apiBaseUrl}/schedules`, {
             method: "POST",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("open_token")}`,
@@ -39,7 +40,7 @@ export const ScheduleProvider = props => {
     }
 
     const updateSchedule = schedule => {
-        return fetch(`http://localhost:8000/schedules/${schedule.id}`, {
+        return fetch(`${baseApi.apiBaseUrl}/schedules/${schedule.id}`, {
             method: "PUT",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("open_token")}`,
@@ -51,7 +52,7 @@ export const ScheduleProvider = props => {
     }
 
     const deleteSchedule = scheduleId => {
-        return fetch(`http://localhost:8000/schedules/${scheduleId}`, {
+        return fetch(`${baseApi.apiBaseUrl}/schedules/${scheduleId}`, {
             method: "DELETE",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("open_token")}`

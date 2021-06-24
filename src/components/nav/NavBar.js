@@ -27,7 +27,7 @@ export const NavBar = (props) => {
         <nav className="menu" tabIndex="0">
         <ul className="navbar">
             <li tabIndex="1" className="icon-logo">
-                <div className="nav-link">OpenDoors</div>
+                <div className="nav-link, logo">OpenDoors</div>
             </li>
             <li tabIndex="1" className="icon-profile">
                 <div className="nav-link">{profile.user?.user.first_name}</div>

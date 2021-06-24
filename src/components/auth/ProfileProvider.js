@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react"
+import { baseApi } from '../APISettings'
 
 export const ProfileContext = createContext()
 
@@ -7,7 +8,7 @@ export const ProfileProvider = (props) => {
     const [profile, setProfile] = useState([])
 
     const getProfile = () => {
-        return fetch("http://localhost:8000/profiles", {
+        return fetch(`${baseApi.apiBaseUrl}/profiles`, {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("open_token")}`
             }

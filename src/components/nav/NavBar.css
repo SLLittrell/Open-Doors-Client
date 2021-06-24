@@ -84,11 +84,13 @@ body {
     transition: all 0.15s linear;
     cursor: pointer;
   }
-  .menu ul li.icon-logo {
-    background-image: url("../../images/OpenLogo.png");
-    background-size: 75%;
-    margin-top: 10px;
-    padding-top: 40px;
+  .logo {
+    font-weight:bolder;
+    font-size: 25px;
+  }
+
+  .menu ul li.icon-profile {
+    background-image: url("https://icongr.am/entypo/user.svg?size=128&color=currentColor");
   }
   .menu ul li.icon-dashboard {
     background-image: url("https://icongr.am/entypo/chat.svg?size=128&color=020550");
