@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, useHistory } from "react-router-dom"
 import "./Auth.css"
-import { baseApi } from '../APISettings'
+import {baseApi} from '../APISettings'
 
 
 
