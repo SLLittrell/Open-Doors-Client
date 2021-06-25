@@ -1,0 +1,18 @@
+.storyResource {
+    margin-bottom: 75px;
+}
+
+.CreateStoryLink {
+    background-color: rgba(38, 128, 151, 0.548);
+    text-align: center;
+    border-radius: 15px;
+    border: black; 
+    margin: 15px;  
+}
+.CreateStoryLink:hover {
+    transform: scale(1.1); 
+}
+
+.tipLink:hover {
+    transform: scale(1.1);  
+}

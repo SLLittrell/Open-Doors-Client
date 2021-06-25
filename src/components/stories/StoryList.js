@@ -30,7 +30,7 @@ export const StoryView = () => {
         <>
             <h1>{oneStory.titlepage}</h1>
             <div>
-            <Carousel ref={wrapper} activeIndex={index} onSelect={handleSelect} interval={null}>
+            <Carousel className="carousel" ref={wrapper} activeIndex={index} onSelect={handleSelect} interval={null}>
                 <Carousel.Item >
                     <img
                     className="d-block w-100"

@@ -10,8 +10,7 @@ export const AdminPortal =()=>{
         <>
             <h2 className="header">Admin Portal</h2>
             <Nav defaultActiveKey="/home" className="flex-column">
-            <NavLink className="postApprove" href={`/post/unapproved/${staffId}`}>Unapproved Posts</NavLink>
-            <NavLink className="newStaff" href='/user/staff'>Add staff User</NavLink>
+            <NavLink className="postApprove" href={`/post/unapproved/${staffId}`}><h4 className="header">Unapproved Posts</h4></NavLink>
             </Nav>
         </>
     )

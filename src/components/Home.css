@@ -1,4 +1,8 @@
 .Home-welcome {
-    background-color: rgba(64, 139, 161, 0.562);
+    display: flex;
+    justify-content: center;
+    padding: 25px;
+    margin-bottom: 25px;
 }
+
 

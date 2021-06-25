@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Card, Carousel, Container, Row, Col, NavLink } from 'react-bootstrap'
 import { useHistory } from 'react-router'
 import { useParams } from 'react-router-dom'
+import './Story.css'
 
 
 export const StoryResource = () => {
@@ -10,17 +11,15 @@ export const StoryResource = () => {
         <>
             <h1 className="header StoryBanner">Social Stories</h1>
             <Container>
-                <Row>
+                <Row className="storyResource row">
                     <Col>
                     <h3>What are Social Stories?</h3>
                     <p>Social Stories are used as a tool to help individuals better understand the nuances of social communication. They provide guidance and directions for responding to various types of social situations,<br/>
                         and are primarily used to promote self-awareness, self-calming, and to clarify expectations when visiting an unfamiliar place.</p>
                     </Col>
                     <Col>
-                    <NavLink href="/stories/create"><h2>Create a Social Story</h2></NavLink>
-                    </Col>
-                    <Col>
-                    <NavLink href="/attractions"><h2>Choose an attraction and create a Social Story</h2></NavLink>
+                    <NavLink className="header CreateStoryLink" href="/stories/create"><h2>Create a Social Story</h2></NavLink>
+                    <NavLink className="header CreateStoryLink" href="/attractions"><h2>Choose an attraction and create a Social Story</h2></NavLink>
                     </Col>
                 </Row>
                 <Row>
@@ -32,7 +31,9 @@ export const StoryResource = () => {
                     </Col>
                     <Col>
                     <h4> How to write a Social Story from Vanderbilt Kennedy Center</h4>
-                    <NavLink href="https://vkc.vumc.org/assets/files/tipsheets/socialstoriestips.pdf">Click here Icon</NavLink>
+                    <NavLink className="header tipLink" href="https://vkc.vumc.org/assets/files/tipsheets/socialstoriestips.pdf">
+                        <img src="https://icongr.am/entypo/open-book.svg?size=128&color=1d7390" 
+                        alt="link to how to make a social story"/></NavLink>
                     </Col>
                 </Row>
             </Container>

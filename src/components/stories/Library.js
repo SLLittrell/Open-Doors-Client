@@ -33,10 +33,10 @@ export const Library = () => {
     return (
         <>  
             
-            <Row>
-                <Col><h2 className='libraryStory'>My Social Stories</h2>
+            <Row >
+                <Col ><h2 className='libraryStory'>My Social Stories</h2>
                 {filterStory?.map((story) => 
-                <Card key ={story.id} style={{ width: '18rem' }}>
+                <Card className="libraryCard" key ={story.id} style={{ width: '18rem' }}>
                 <Card.Img variant="top" src={story.title_image} />
                 <Card.Body>
                   <Card.Title>{story.titlepage}</Card.Title>
@@ -48,7 +48,7 @@ export const Library = () => {
               <Col>
               <h2 className="header">My Visual Schedules</h2>
               {filterSchedule?.map((sched)=>
-              <Card key ={sched.id} style={{ width: '18rem' }}>
+              <Card className="libraryCard" key ={sched.id} style={{ width: '18rem' }}>
               <Card.Img variant="top" src={sched.image_1} />
               <Card.Body>
                 <Card.Title>{sched.title}</Card.Title>

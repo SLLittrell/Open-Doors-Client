@@ -1,3 +1,11 @@
 .libraryStory {
     text-align: center;
 }
+.libraryCard {
+   margin: auto;
+   
+}
+.libraryCard img {
+    height: 250px;
+    object-fit:cover;
+}
