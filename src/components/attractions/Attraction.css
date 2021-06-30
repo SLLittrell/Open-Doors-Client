@@ -16,3 +16,8 @@
     position: relative;
     text-align: center;  
 }
+
+.attractionDetails {
+    margin:auto;
+    width: 75%;
+}

@@ -3,6 +3,7 @@ import { Card, Container, Jumbotron, NavLink } from "react-bootstrap"
 import { Link, useHistory, useParams } from "react-router-dom"
 import { AttractionContext } from "./AttractionProvider"
 import Button from 'react-bootstrap/Button'
+import "./Attraction.css"
 
 export const AttractionDetails = () => {
     const{getAttractionDetails, details} = useContext(AttractionContext)
@@ -17,23 +18,11 @@ export const AttractionDetails = () => {
         getAttractionDetails(attractionId)
     },[])
 
-    // useEffect(() => {
-    //    const [url1, url2] = details.url.split(";")
-    //     setUrl(url2) 
-    // },[details])
-
-
-    // useEffect(() =>{
-    // if(url !== ""){
-    // const [url1, url2] = url.split(";")
-    //     setSplitUrl(url1)
-    // }
-    // },[url])
         
 
     return(
         <>
-            <Card>
+            <Card className="attractionDetails">
                 <Card.Img variant="top" src={details.preview?.source} width="25%" />
                 <Card.Body>
                 <Jumbotron fluid>
@@ -48,8 +37,8 @@ export const AttractionDetails = () => {
                     Address: {details.address?.house_number}{details.address?.road} {details.address?.city} {details.address?.state}
                 </Card.Text>
                 </Card.Body>
+            <Button className="createStory-btn" onClick={()=>history.push(`/story/create/${attractionId}`)}>Create a story</Button>
             </Card>
-            <Button onClick={()=>history.push(`/story/create/${attractionId}`)}>Create a story</Button>
         </>
     )
 }
