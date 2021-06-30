@@ -20,7 +20,7 @@ export const ScheduleView = () => {
         <>
             <h1 className="scheduleTitle">{singleSched.title}</h1>
             <div></div>
-            <Container>
+            <Container className="scheduleContainer">
                 <Row className="schedRow"><h2>1</h2>
                     <Col lg={8}><h2 className="activity">{singleSched.activity_1}</h2></Col>
                     <Col sm={2}>

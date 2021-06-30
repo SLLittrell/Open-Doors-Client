@@ -89,6 +89,9 @@ body {
     font-size: 25px;
   }
 
+  .menu ul li.icon-admin {
+    background-image: url("https://icongr.am/entypo/traffic-cone.svg?size=128&color=currentColor");
+  }
   .menu ul li.icon-profile {
     background-image: url("https://icongr.am/entypo/user.svg?size=128&color=currentColor");
   }

@@ -35,9 +35,6 @@ export const NavBar = (props) => {
             <li tabIndex="1" className="icon-users">
                 <Nav.Link className="nav-link" href="/">Home</Nav.Link>
             </li>
-            <li tabIndex="2" className="icon-attractions">
-                <Nav.Link className="nav-link" href="/attractions">Search Attractions</Nav.Link>
-            </li>
             <li tabIndex="3" className="icon-story">
                 <Nav.Link className="nav-link" href="/stories">Social Stories</Nav.Link>
             </li> 
@@ -45,6 +42,9 @@ export const NavBar = (props) => {
             <li tabIndex="4" className="icon-schedule">
                 <Nav.Link className="nav-link" href="/schedules">Visual Schedules</Nav.Link>
             </li> 
+            <li tabIndex="2" className="icon-attractions">
+                <Nav.Link className="nav-link" href="/attractions">Search Attractions</Nav.Link>
+            </li>
 
             <li tabIndex="5" className="icon-library">
                 <Nav.Link className="nav-link" href="/library">My Library</Nav.Link>
@@ -60,7 +60,7 @@ export const NavBar = (props) => {
                 <Nav.Link className="nav-link" href="/posts/create">Add Post</Nav.Link>
             </li>
             {/* If Staff show link to admin portal */}
-            {isStaff ? <li tabIndex="8" className="icon-dashboard">
+            {isStaff ? <li tabIndex="8" className="icon-admin">
                 <Nav.Link className="nav-link" href={`/admin/${profile.user?.user.id}`}>Admin Portal</Nav.Link>
             </li>: <></>}
             

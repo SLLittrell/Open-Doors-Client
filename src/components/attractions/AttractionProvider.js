@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from "react"
+import { settings } from "../auth/Settings"
 
 
 export const AttractionContext = createContext()
@@ -11,7 +12,7 @@ export const AttractionProvider = (props) => {
 
 
     const getLocation = () => {
-        return fetch(`https://api.opentripmap.com/0.1/en/places/geoname?name=${searchTerms}&country=us&apikey=${process.env.REACT_APP_API_TOKEN}`)
+        return fetch(`https://api.opentripmap.com/0.1/en/places/geoname?name=${searchTerms}&country=us&apikey=${settings.openApiKey}`)
             .then(response => response.json())
             .then(parsed => {
                 setLocations(parsed)
@@ -20,7 +21,7 @@ export const AttractionProvider = (props) => {
     }
     
     const getAttractions = (local) => {
-        return fetch(`https://api.opentripmap.com/0.1/en/places/radius?radius=8000&lon=${local.lon}&lat=${local.lat}&src_geom=osm&src_attr=wikidata&format=json&apikey=${process.env.REACT_APP_API_TOKEN}`, {
+        return fetch(`https://api.opentripmap.com/0.1/en/places/radius?radius=8000&lon=${local.lon}&lat=${local.lat}&src_geom=osm&src_attr=wikidata&format=json&apikey=${settings.openApiKey}`, {
         })
             .then(response => response.json())
             // .then(parsedAttractions => 
@@ -28,7 +29,7 @@ export const AttractionProvider = (props) => {
     }
     
     const getAttractionDetails = (attractionId) => {
-        return fetch(`https://api.opentripmap.com/0.1/en/places/xid/${attractionId}?apikey=${process.env.REACT_APP_API_TOKEN}`, {
+        return fetch(`https://api.opentripmap.com/0.1/en/places/xid/${attractionId}?apikey=${settings.openApiKey}`, {
         })
             .then(response => response.json())
             .then(parsedAttractions => 
